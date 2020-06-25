@@ -101,6 +101,25 @@ class Category(BaseModel):
         }
 
 
+class CompanyAdvantage(BaseModel):
+    title = models.CharField(max_length=70, verbose_name=u'标题')
+    excerpt = models.TextField(max_length=500, blank=True, default="", verbose_name=u'优势摘要')
+
+    class Meta:
+        verbose_name = "公司优势"
+        verbose_name_plural = "公司优势"
+
+    def __str__(self):
+        return self.title
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'excerpt': self.excerpt
+        }
+
+
 class News(BaseModel):
     title = models.CharField(max_length=70, verbose_name=u'标题')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'咨询摘要')
@@ -213,6 +232,30 @@ class ProductDocs(BaseModel):
         }
 
 
+class Partnet(BaseModel):
+    name = models.CharField(max_length=70, default="", verbose_name=u'名称')
+    logo = models.ImageField(upload_to='cos_logo/%Y/%m/%d/', blank=True, null=True, verbose_name=u'Logo')
+    excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
+    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
+
+    class Meta:
+        verbose_name = "合作伙伴表"
+        verbose_name_plural = "合作伙伴表"
+
+    def __str__(self):
+        return self.name
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'logo': str(self.logo),
+            'excerpt': self.excerpt,
+            'is_del': self.is_del,
+            'created_at': self.created_at
+        }
+
+
 class Costomer(BaseModel):
     name = models.CharField(max_length=70, default="", verbose_name=u'名称')
     logo = models.ImageField(upload_to='cos_logo/%Y/%m/%d/', blank=True, null=True, verbose_name=u'Logo')
@@ -238,6 +281,7 @@ class Costomer(BaseModel):
 
 
 class Product(BaseModel):
+    PCAT_CHOICES = [(x, x) for x in ['blockchain', 'other']]
     name = models.CharField(max_length=70, default="", verbose_name=u'产品名称')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
     icon = models.ImageField(upload_to='product_icon/%Y/%m/%d/', blank=True, null=True, verbose_name=u'图片')
@@ -253,6 +297,7 @@ class Product(BaseModel):
     product_adv = models.ManyToManyField(ProductAdvantage, blank=True, null=True, verbose_name=u'产品优势')
     product_doc = models.ManyToManyField(ProductDocs, blank=True, null=True, verbose_name=u'产品文档')
     product_cos = models.ManyToManyField(Costomer, blank=True, null=True, verbose_name=u'客户案例')
+    product_cat = models.CharField(max_length=70, choices=PCAT_CHOICES, default="blockchain", verbose_name=u'产品名称')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
 
     class Meta:
@@ -290,6 +335,7 @@ class Product(BaseModel):
             'product_adv': self.get_product_adv(),
             'product_docs': self.get_product_docs(),
             'product_cos': self.get_product_cos(),
+            'product_cat': self.product_cat,
             'detail': self.detail,
             'is_del': self.is_del,
             'created_at':self.created_at
@@ -314,6 +360,42 @@ class Solution(BaseModel):
     class Meta:
         verbose_name = "解决方案表"
         verbose_name_plural = "解决方案表"
+
+    def __str__(self):
+        return self.name
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'excerpt': self.excerpt,
+            'img': str(self.img),
+            'views': self.views,
+            'detail': self.detail,
+            'is_del': self.is_del,
+            'created_at':self.created_at
+        }
+
+
+class Research(BaseModel):
+    name = models.CharField(max_length=70, default="", verbose_name=u'研究标题')
+    excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'研究摘要')
+    img = models.ImageField(upload_to='solution_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'研究图片')
+    category = models.ForeignKey(
+        Category, related_name='research_category', blank=True, null=True, on_delete=models.DO_NOTHING, verbose_name=u'研究分类'
+    )
+    pdf_file = models.FileField("pdf文件", upload_to='pdf_file/%Y/%m/%d/', blank=True, null=True)
+    views = models.PositiveIntegerField(default=0, verbose_name=u'研究内容查看次数')
+    detail = UEditorField(
+        width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
+        upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
+        verbose_name=u'研究内容'
+    )
+    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
+
+    class Meta:
+        verbose_name = "研究中心表"
+        verbose_name_plural = "研究中心表"
 
     def __str__(self):
         return self.name
