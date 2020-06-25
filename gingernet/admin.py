@@ -64,28 +64,28 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(ProductAdvantage)
 class ProductAdvantageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'created_at')
+    list_display = ('id', 'name', 'created_at')
     list_per_page = 50
     ordering = ('-created_at',)
 
 
 @admin.register(ProductFunc)
 class ProductFuncAdmin(admin.ModelAdmin):
-    list_display = ('id', 'created_at')
+    list_display = ('id', 'name', 'created_at')
     list_per_page = 50
     ordering = ('-created_at',)
 
 
 @admin.register(ProductDocs)
 class ProductDocsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'created_at')
+    list_display = ('id', 'name', 'created_at')
     list_per_page = 50
     ordering = ('-created_at',)
 
 
 @admin.register(Costomer)
 class CostomerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'created_at')
+    list_display = ('id', 'name', 'created_at')
     list_per_page = 50
     ordering = ('-created_at',)
 
