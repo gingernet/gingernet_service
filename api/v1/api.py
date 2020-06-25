@@ -19,7 +19,7 @@ from gingernet.models import (
     Banner, Link, Category, NavCat, ProductDocs,
     ProductAdvantage, ProductFunc, Costomer, Product,
     News, Solution, ContactUs, OnlineMsg, ApiAuth,
-    CompanyIntro, TechTeam, DevHis)
+    CompanyIntro, TechTeam, DevHis, CompanyAdvantage, Research)
 
 
 logger = logging.getLogger(__name__)
@@ -104,8 +104,12 @@ def get_nav_cat(request):
 def get_index(request):
     banner_list = Banner.objects.values(
         'id', 'text_info', 'img', 'link_url').filter(banner_mark='index', is_active=True)[0:6]
-    product_list = Product.objects.values(
-        'id', 'name', 'icon', 'img', 'excerpt').filter(is_del='NO')
+    chain_product_list = Product.objects.values(
+        'id', 'name', 'icon', 'img', 'excerpt').filter(product_cat='blockchain',is_del='NO')
+    other_product_list = Product.objects.values(
+        'id', 'name', 'icon', 'img', 'excerpt').filter(product_cat='other', is_del='NO')
+    company_adv_list = CompanyAdvantage.objects.values(
+        'id', 'title', 'excerpt').filter(is_del='NO')
     solution_list = Solution.objects.values(
         'id', 'name', 'img', 'excerpt').filter(is_del='NO').order_by('-id')[0:3]
     news_list = News.objects.values(
@@ -114,10 +118,12 @@ def get_index(request):
         'id', 'name', 'logo', 'excerpt').filter(is_del='NO').order_by('-id')
     index_data = {
         "banner": list(banner_list),
-        "product": list(product_list),
+        "chain_product": list(chain_product_list),
+        "company_adv": list(company_adv_list),
+        "other_product": list(other_product_list),
         "solution": list(solution_list),
-        "news": list(news_list),
         "costomer": list(costomer_list),
+        "news": list(news_list),
     }
     return ok_json(index_data)
 
@@ -206,6 +212,42 @@ def get_news_detail(request):
     return ok_json(news.to_dict())
 
 
+# 研究中心列表
+@csrf_exempt
+@catch_error
+@check_api_token
+def get_resarch_list(request):
+    page = request.POST.get('page', 0)
+    number = request.POST.get('number', 20)
+    cat_id = request.POST.get('cat_id', 0)
+    research_list = Research.objects.values(
+        "id", "name", 'excerpt', "category",
+        "img", "pdf_file", 'views', 'author', 'created_at').all()
+    if cat_id not in ['0', 0, ""]:
+        category = Category.objects.get(id=cat_id)
+        research_list = research_list.filter(category=category)
+    paginator = Paginator(research_list, number)
+    try:
+        research_list = paginator.page(page)
+    except PageNotAnInteger:
+        research_list = paginator.page(1)
+    except EmptyPage:
+        research_list = paginator.page(paginator.num_pages)
+    return ok_json(list(research_list))
+
+
+# 新闻详情页
+@csrf_exempt
+@catch_error
+@check_api_token
+def get_research_detail(request):
+    r_id = request.POST.get('r_id', 0)
+    researchs = Research.objects.get(id=r_id)
+    researchs.views += 1
+    researchs.save()
+    return ok_json(researchs.to_dict())
+
+
 # 解决方案列表
 @csrf_exempt
 @catch_error
@@ -261,21 +303,25 @@ def create_online_msg(request):
     name = request.POST.get('name', "")
     phone = request.POST.get('phone', "")
     email = request.POST.get('email', "")
+    weichat = request.POST.get('weichat', "")
     content = request.POST.get('content', "")
-    logging.info("name = %s and phone = %s and email = %s and content = %s",
-                 name, phone, email, content)
+    logging.info("name = %s and phone = %s and email = %s and content = %s weichat = %s",
+                 name, phone, email, content, weichat)
     if name in ["", None]:
         return error_json("用户名不能为空", 1000)
     if phone in ["", None]:
         return error_json("手机号不能为空", 1000)
     if email in ["", None]:
         return error_json("电子邮件不能为空", 1000)
+    if weichat in ["", None]:
+        return error_json("微信不能为空", 1000)
     if content in ["", None]:
         return error_json("内容不能为空", 1000)
     on_msg = OnlineMsg.objects.create(
         name=name,
         phone=phone,
         email=email,
+        weichat=weichat,
         content=content,
     )
     return ok_json(on_msg.to_dict())

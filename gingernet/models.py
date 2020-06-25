@@ -104,6 +104,13 @@ class Category(BaseModel):
 class CompanyAdvantage(BaseModel):
     title = models.CharField(max_length=70, verbose_name=u'标题')
     excerpt = models.TextField(max_length=500, blank=True, default="", verbose_name=u'优势摘要')
+    img = models.ImageField(upload_to='adv_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'优势图片')
+    body = UEditorField(
+        width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
+        upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
+        verbose_name=u'优势详情'
+    )
+    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
 
     class Meta:
         verbose_name = "公司优势"
@@ -116,7 +123,10 @@ class CompanyAdvantage(BaseModel):
         return {
             'id': self.id,
             'title': self.title,
-            'excerpt': self.excerpt
+            'img': str(self.img),
+            'excerpt': self.excerpt,
+            'body': self.body,
+            'is_del': self.is_del
         }
 
 
@@ -386,6 +396,7 @@ class Research(BaseModel):
     )
     pdf_file = models.FileField("pdf文件", upload_to='pdf_file/%Y/%m/%d/', blank=True, null=True)
     views = models.PositiveIntegerField(default=0, verbose_name=u'研究内容查看次数')
+    author = models.CharField(max_length=70, default="知鱼定制", verbose_name=u'作者')
     detail = UEditorField(
         width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
         upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
@@ -407,7 +418,9 @@ class Research(BaseModel):
             'excerpt': self.excerpt,
             'img': str(self.img),
             'views': self.views,
+            'pdf_file': str(self.pdf_file),
             'detail': self.detail,
+            'author': self.author,
             'is_del': self.is_del,
             'created_at':self.created_at
         }
@@ -474,6 +487,7 @@ class OnlineMsg(BaseModel):
     name = models.CharField(max_length=70, verbose_name=u'姓名')
     phone = models.CharField(max_length=70, verbose_name=u'电话')
     email = models.CharField(max_length=70, verbose_name=u'邮箱')
+    weichat = models.CharField(max_length=70, verbose_name=u'邮箱')
     content = models.TextField(max_length=500, blank=True, default="", verbose_name=u'留言内容')
     is_handle = models.CharField(max_length=16, choices=HANDLE_CHOICES, default='NO', verbose_name=u'是否处理')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
@@ -491,6 +505,7 @@ class OnlineMsg(BaseModel):
             'name': self.name,
             'phone': self.phone,
             'email': self.email,
+            'weichat': self.weichat,
             'content': self.content,
             'is_handle': self.is_handle,
             'is_del': self.is_del,
