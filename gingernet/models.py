@@ -565,6 +565,28 @@ class TechTeam(BaseModel):
         }
 
 
+class CompanyValue(BaseModel):
+    name = models.CharField(max_length=70, default="", verbose_name=u'价值观标题')
+    excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'价值观内容')
+    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
+
+    class Meta:
+        verbose_name = "价值观表"
+        verbose_name_plural = "价值观表"
+
+    def __str__(self):
+        return self.name
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'excerpt': self.excerpt,
+            'is_del': self.is_del,
+            'created_at': self.created_at
+        }
+
+
 class DevHis(BaseModel):
     period = models.CharField(max_length=70, verbose_name=u'时间段')
     detail = models.TextField(max_length=200, blank=True, default="", verbose_name=u'发展概述')

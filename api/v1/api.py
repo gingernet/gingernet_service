@@ -19,7 +19,7 @@ from gingernet.models import (
     Banner, Link, Category, NavCat, ProductDocs,
     ProductAdvantage, ProductFunc, Costomer, Product,
     News, Solution, ContactUs, OnlineMsg, ApiAuth,
-    CompanyIntro, TechTeam, DevHis, CompanyAdvantage, Research)
+    CompanyIntro, TechTeam, DevHis, CompanyAdvantage, Research, CompanyValue)
 
 
 logger = logging.getLogger(__name__)
@@ -333,11 +333,14 @@ def create_online_msg(request):
 def get_about(request):
     company_intro = CompanyIntro.objects.filter(is_del='NO').first()
     tech_team = TechTeam.objects.filter(is_del='NO').first()
+    company_value_list = CompanyValue.objects.values(
+        'name', 'excerpt').filter(is_del='NO').order_by('-id')
     dev_his_list = DevHis.objects.values(
         'period', 'detail').filter(is_del='NO').order_by('-id')
     contract_us = ContactUs.objects.filter(is_del='NO').first()
     ret_data = {
         'company_intro': company_intro.to_dict(),
+        'company_value': list(company_value_list),
         'tech_team': tech_team.to_dict(),
         'dev_his_list': list(dev_his_list),
         'contract_us': contract_us.to_dict(),

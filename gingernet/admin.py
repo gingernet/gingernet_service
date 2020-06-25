@@ -3,8 +3,17 @@ from gingernet.models import (
     Banner, Link, Category, NavCat, ProductDocs,
     ProductAdvantage, ProductFunc, Costomer, Product,
     News, Case, Solution, ContactUs, OnlineMsg, ApiAuth,
-    CompanyIntro, TechTeam, DevHis, Research, CompanyAdvantage
+    CompanyIntro, TechTeam, DevHis, Research, CompanyAdvantage, CompanyValue
 )
+
+
+@admin.register(CompanyValue)
+class CompanyValueAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'excerpt', 'is_del')
+    list_per_page = 50
+    ordering = ('-created_at',)
+    list_display_links = ('id', 'name')
+
 
 @admin.register(Research)
 class ResearchAdmin(admin.ModelAdmin):
