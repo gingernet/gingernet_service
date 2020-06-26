@@ -304,7 +304,7 @@ def get_partner_detail(request):
     else:
         return error_json("暂时没有这种类型的合作伙伴")
 
-        
+
 @csrf_exempt
 @catch_error
 @check_api_token
