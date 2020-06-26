@@ -2,9 +2,16 @@ from django.contrib import admin
 from gingernet.models import (
     Banner, Link, Category, NavCat, ProductDocs,
     ProductAdvantage, ProductFunc, Costomer, Product,
-    News, Solution, ContactUs, OnlineMsg, ApiAuth,
+    News, Solution, ContactUs, OnlineMsg, ApiAuth, Partner,
     CompanyIntro, TechTeam, DevHis, Research, CompanyAdvantage, CompanyValue
 )
+
+@admin.register(Partner)
+class PartnerValueAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'excerpt', 'is_del')
+    list_per_page = 50
+    ordering = ('-created_at',)
+    list_display_links = ('id', 'name')
 
 
 @admin.register(CompanyValue)
