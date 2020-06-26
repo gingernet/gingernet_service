@@ -41,31 +41,6 @@ def catch_error(func):
     return __wrap
 
 
-# 获取 banner 图接口
-@csrf_exempt
-@catch_error
-@check_api_token
-def get_banners(request):
-    banner_mark = request.POST.get('banner_mark', "")
-    banner_list = Banner.objects.values(
-        "id", "text_info", "img", "banner_mark", "link_url").all()
-    if banner_mark not in ["", None]:
-        banner_list = banner_list.filter(banner_mark=banner_mark)
-    banner_list = banner_list.order_by('-id')
-    banner_list = banner_list[0:6]
-    return ok_json((list(banner_list)))
-
-
-# 获取友情链接接口
-@csrf_exempt
-@catch_error
-@check_api_token
-def get_links(request):
-    link_list = Link.objects.values(
-        "name", "logo", "linkurl").all()
-    return ok_json(list(link_list))
-
-
 # 获取导航条和分类
 @csrf_exempt
 @catch_error
@@ -157,9 +132,17 @@ def get_product_list(request):
 @csrf_exempt
 @catch_error
 @check_api_token
-def get_product_detail(request):
+def get_product_detail_by_id(request):
     pro_id = request.POST.get('pro_id', 0)
     product = Product.objects.get(id=pro_id)
+    return ok_json(product.to_dict())
+
+
+# 根据分类ID获取产品详情
+def get_product_detail_by_cat(request):
+    pro_cat_id = request.POST.get('pro_cat_id', 0)
+    category = Category.objects.get(id=pro_cat_id)
+    product = Product.objects.filter(category=category).first()
     return ok_json(product.to_dict())
 
 
