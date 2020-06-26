@@ -2,7 +2,7 @@ from django.contrib import admin
 from gingernet.models import (
     Banner, Link, Category, NavCat, ProductDocs,
     ProductAdvantage, ProductFunc, Costomer, Product,
-    News, Case, Solution, ContactUs, OnlineMsg, ApiAuth,
+    News, Solution, ContactUs, OnlineMsg, ApiAuth,
     CompanyIntro, TechTeam, DevHis, Research, CompanyAdvantage, CompanyValue
 )
 
@@ -113,14 +113,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_per_page = 50
     ordering = ('-created_at',)
     list_display_links = ('id', 'name')
-
-
-@admin.register(Case)
-class CaseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'views', 'created_at')
-    list_per_page = 50
-    ordering = ('-created_at',)
-    list_display_links = ('id', 'title')
 
 
 @admin.register(ContactUs)

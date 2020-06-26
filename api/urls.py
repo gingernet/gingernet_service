@@ -1,9 +1,9 @@
 from django.conf.urls import url
 from api.v1.api import (
     get_index, get_nav_cat, get_product_list, get_product_detail_by_id,
-    get_product_detail_by_cat,get_product_docs, get_news_list, get_news_detail,
-    get_solution_list, get_solution_detail, get_cos_list, create_online_msg, get_about,
-    get_resarch_list, get_research_detail
+    get_product_detail_by_cat, get_product_docs, get_news_list, get_news_detail,
+    get_solution_list, get_solution_detail, get_partner_list, create_online_msg, get_about,
+    get_resarch_list, get_research_detail, get_partner_detail
 )
 
 urlpatterns = [
@@ -30,7 +30,8 @@ urlpatterns = [
     url('get_research_detail/', get_research_detail),
 
     # 获取客户列表
-    url('get_cos_list/', get_cos_list),
+    url('get_partner_list/', get_partner_list),
+    url('get_partner_detail', get_partner_detail),
 
     # 创建在线消息
     url('create_online_msg/', create_online_msg),

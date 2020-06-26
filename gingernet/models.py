@@ -242,10 +242,17 @@ class ProductDocs(BaseModel):
         }
 
 
-class Partnet(BaseModel):
+class Partner (BaseModel):
+    TYPE_CHOICES = [(x, x) for x in ['Company', 'Media']]
     name = models.CharField(max_length=70, default="", verbose_name=u'名称')
     logo = models.ImageField(upload_to='cos_logo/%Y/%m/%d/', blank=True, null=True, verbose_name=u'Logo')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
+    detail = UEditorField(
+        width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
+        upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
+        verbose_name=u'详情'
+    )
+    type = models.CharField(max_length=16, choices=TYPE_CHOICES, default='Company', verbose_name=u'合作客户类型')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
 
     class Meta:
@@ -261,6 +268,8 @@ class Partnet(BaseModel):
             'name': self.name,
             'logo': str(self.logo),
             'excerpt': self.excerpt,
+            'type': self.type,
+            'detail': self.detail,
             'is_del': self.is_del,
             'created_at': self.created_at
         }
@@ -423,37 +432,6 @@ class Research(BaseModel):
             'author': self.author,
             'is_del': self.is_del,
             'created_at':self.created_at
-        }
-
-
-class Case(BaseModel):
-    title = models.CharField(max_length=70, default="", verbose_name=u'案例标题')
-    img = models.ImageField(upload_to='case_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'案例图片')
-    body = UEditorField(
-        width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
-        upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
-        verbose_name=u'案例内容'
-    )
-    nav_cat = models.ForeignKey(NavCat, blank=True, null=True, on_delete=models.DO_NOTHING, verbose_name=u'案例分类')
-    views = models.PositiveIntegerField(default=0, verbose_name=u'案例查看次数')
-    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
-
-    class Meta:
-        verbose_name = "客户案例"
-        verbose_name_plural = "客户案例"
-
-    def __str__(self):
-        return self.title
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'img': str(self.img),
-            'body': self.body,
-            'nav_cat': self.nav_cat,
-            'views': self.views,
-            'is_del': self.is_del,
-            'created_at': self.created_at
         }
 
 

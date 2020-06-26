@@ -18,7 +18,7 @@ from gingernet.helper import check_api_token
 from gingernet.models import (
     Banner, Link, Category, NavCat, ProductDocs,
     ProductAdvantage, ProductFunc, Costomer, Product,
-    News, Solution, ContactUs, OnlineMsg, ApiAuth,
+    News, Solution, ContactUs, OnlineMsg, ApiAuth, Partner,
     CompanyIntro, TechTeam, DevHis, CompanyAdvantage, Research, CompanyValue)
 
 
@@ -270,17 +270,41 @@ def get_solution_detail(request):
     return ok_json(solution.to_dict())
 
 
-# 解决方案详情
+# 获取合作伙伴列表
 @csrf_exempt
 @catch_error
 @check_api_token
-def get_cos_list(request):
-    cos_list = Costomer.objects.values(
-        'id', 'name', 'logo', 'excerpt').all()
-    return ok_json(list(cos_list))
+def get_partner_list(request):
+    company_list = Partner.objects.values(
+        'id', 'name', 'logo', 'excerpt').filter(type='Company', is_del='NO').order_by('-id')
+    media_list = Partner.objects.values(
+        'id', 'name', 'logo', 'excerpt').filter(type='Media', is_del='NO').order_by('-id')
+    costomer_list = Costomer.objects.values(
+        'id', 'name', 'logo', 'excerpt').filter(is_del='NO').all()
+    partner_json={
+        'company': list(company_list),
+        'media': list(media_list),
+        'costomer': list(costomer_list)
+    }
+    return ok_json(partner_json)
 
 
-# 解决方案详情
+@csrf_exempt
+@catch_error
+@check_api_token
+def get_partner_detail(request):
+    type = request.POST.get('type', "")
+    part_id = request.POST.get('part_id', "")
+    if type in ['Company', 'Media']:
+        partner = Partner.objects.get(id=part_id)
+        return ok_json(partner.to_dict())
+    elif type == 'Costomer':
+        costomer = Costomer.objects.get(id=part_id)
+        return ok_json(costomer.to_dict())
+    else:
+        return error_json("暂时没有这种类型的合作伙伴")
+
+        
 @csrf_exempt
 @catch_error
 @check_api_token
