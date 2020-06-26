@@ -143,7 +143,9 @@ def get_product_detail_by_cat(request):
     pro_cat_id = request.POST.get('pro_cat_id', 0)
     category = Category.objects.get(id=pro_cat_id)
     product = Product.objects.filter(category=category).first()
-    return ok_json(product.to_dict())
+    if product is not None:
+        return ok_json(product.to_dict())
+    return error_json("暂时没有录入这个产品的信息", 1000)
 
 
 # 阅读产品接口文档
