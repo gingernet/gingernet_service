@@ -309,22 +309,22 @@ def get_partner_detail(request):
 @catch_error
 @check_api_token
 def create_online_msg(request):
-    name = request.POST.get('name', "")
-    phone = request.POST.get('phone', "")
-    email = request.POST.get('email', "")
-    weichat = request.POST.get('weichat', "")
-    content = request.POST.get('content', "")
+    name = request.POST.get('name')
+    phone = request.POST.get('phone')
+    email = request.POST.get('email')
+    weichat = request.POST.get('weichat')
+    content = request.POST.get('content')
     logging.info("name = %s and phone = %s and email = %s and content = %s weichat = %s",
                  name, phone, email, content, weichat)
-    if name in ["", None]:
+    if name in ["", "None", None]:
         return error_json("用户名不能为空", 1000)
-    if phone in ["", None]:
+    if phone in ["", "None", None]:
         return error_json("手机号不能为空", 1000)
-    if email in ["", None]:
+    if email in ["", "None", None]:
         return error_json("电子邮件不能为空", 1000)
-    if weichat in ["", None]:
+    if weichat in ["", "None", None]:
         return error_json("微信不能为空", 1000)
-    if content in ["", None]:
+    if content in ["", "None", None]:
         return error_json("内容不能为空", 1000)
     on_msg = OnlineMsg.objects.create(
         name=name,
