@@ -174,7 +174,7 @@ def get_news_list(request):
     if cat_id not in ['0', 0, ""]:
         category = Category.objects.get(id=cat_id)
         news_lists = news_lists.filter(category=category)
-
+    total = len(news_lists)
     paginator = Paginator(news_lists, number)
     try:
         news_lists = paginator.page(page)
@@ -182,7 +182,11 @@ def get_news_list(request):
         news_lists = paginator.page(1)
     except EmptyPage:
         news_lists = paginator.page(paginator.num_pages)
-    return ok_json(list(news_lists))
+    news_data = {
+        'total': total,
+        'news_lists': list(news_lists)
+    }
+    return ok_json(news_data)
 
 
 # 新闻详情页
