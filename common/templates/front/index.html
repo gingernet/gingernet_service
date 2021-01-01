@@ -1,0 +1,209 @@
+{% extends 'front/layout/main.html' %}
+{% load staticfiles ginger_tags %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/common.css' %}" />
+{% endblock %}
+{% block body %}
+    {% include 'front/layout/nav.html' %}
+    <div class="banner-container">
+        <ul class="bd">
+            <li><a href="#"><img src="{% static 'images/banner_1.png' %}" alt="banner"></a></li>
+            <li><a href="#"><img src="{% static 'images/banner_2.png' %}" alt="banner"></a></li>
+            <li><a href="#"><img src="{% static 'images/banner_3.png' %}" alt="banner"></a></li>
+            <li><a href="#"><img src="{% static 'images/banner_4.png' %}" alt="banner"></a></li>
+        </ul>
+        <ul class="hd">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <!-- 一直不懈的努力，提供最好的服务我们，随时随地待命 -->
+    <div class="module-box">
+        <div class="module-title">
+            <p>我们的优势</p>
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+        </div>
+        <ul class="serve-box container">
+            <div class="row justify-content-between">
+                {% for company_adv in company_adv_list %}
+                <li class="col-xl-4 col-md-6 col-12">
+                    <div class="server-item">
+                        <div class="img-box">
+                            <img src="{% url 'index' %}media/{{ company_adv.img }}" alt="serve_1">
+                        </div>
+                        <p class="serve-item-title">{{ company_adv.title }}</p>
+                        <p class="serve-item-content">{{ company_adv.excerpt }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </div>
+        </ul>
+    </div>
+    <div class="module-box gray-module-box">
+        <div class="module-title">
+            <p>全球领先的区块链技术服务提供商</p>
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+        </div>
+        <ul class="cutting-box">
+            {% for chain_product in chain_product_list %}
+            <li>
+                <div>
+                    <img src="{% url 'index' %}media/{{ chain_product.icon }}" alt="cutting_icon_1">
+                    <p>{{ chain_product.name }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- 技术解决方案 -->
+    <div class="module-box">
+        <div class="module-title">
+            <p>技术解决方案</p>
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+        </div>
+        <div class="container" style="margin-top: 40px;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="portfolio-main">
+                        <div id="portfolio-item" class="portfolio-item-active">
+                            {% for solution in solution_list %}
+                                <div class="cbp-item  baaspt">
+                                    <div class="portfolio-single">
+                                        <div class="portfolio-img">
+                                            <img src="{% url 'index' %}media/{{ solution.img }}" alt="#">
+                                        </div>
+                                        <div class="portfolio-content">
+                                            <h4><a href="mayilian_Baas_pingtai.html">{{ solution.name }}</a></h4>
+                                            <p>{{ solution.excerpt }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 我们精于区块链，但不局限区块链 -->
+    <div class="module-box gray-module-box">
+        <div class="module-title">
+            <p>我们精于区块链，但不局限区块链</p>
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+        </div>
+        <ul class="cutting-box">
+            {% for other_product in other_product_list %}
+            <li>
+                <div>
+                    <img src="{% url 'index' %}media/{{ other_product.img }}" alt="cutting_icon_1">
+                    <p>{{ other_product.name }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- 媒体动态 -->
+    <div class="module-box container">
+        <div class="module-title">
+            <p>媒体动态</p>
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+        </div>
+        <div class="container">
+            <ul class="media-box row">
+                {% for news in news_list %}
+                <li class="col-lg-3 col-md-6 col-12">
+                    <div class="media-item">
+                        <img src=".{% url 'index' %}media/{{ news.img }}" alt="heixinyoushi_01.png">
+                        <div class="media-text">
+                            <p class="media-title">{{ news.title }}</p>
+                            <p class="media-content">{{ news.excerpt }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- 我们的客户 -->
+    <div class="module-box gray-module-box">
+        <div class="module-title">
+            <p>我们的客户</p>
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+        </div>
+        <div class="client-container container">
+            <div class="row">
+                <div class="client-box col-10 owl-carousel">
+                    {% for costomer in costomer_list %}
+                        <div>{{ costomer.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.client-box').owlCarousel({
+            items: 6,
+            loop:true,
+            autoplay: true,
+            autoplayTimeout: 2000,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:2
+                },
+                576:{
+                    items:3
+                },
+                768: {
+                    items:3
+                },
+                960: {
+                    items:4
+                },
+                1140:{
+                    items:6
+                }
+            }
+        })
+    </script>
+    {% include 'front/layout/ask.html' %}
+    {% include 'front/layout/bottom.html' %}
+    {% include 'front/layout/right.html' %}
+{% endblock %}
+{% block script %}
+     <script>
+		$('#portfolio-item').cubeportfolio({
+			filters: '#portfolio-nav',
+			loadMoreAction: 'click',
+			// defaultFilter: '*',
+			defaultFilter: '.baaspt',
+			layoutMode: 'grid',
+			animationType: 'quicksand',
+			gridAdjustment: 'responsive',
+			gapHorizontal: 30,
+			gapVertical: 30,
+			mediaQueries: [{
+				width: 1100,
+				cols: 3,
+			},{
+				width: 768,
+				cols: 3,
+			}, {
+				width: 480,
+				cols: 2,
+			},{
+				width: 0,
+				cols: 1,
+			}],
+			caption: 'overlayBottomPush',
+			displayType: 'sequentially',
+			displayTypeSpeed: 80,
+		});
+     </script>
+     <script>
+        jQuery(".banner-container").slide({mainCell:".bd",autoPlay:true});
+    </script>
+{% endblock %}

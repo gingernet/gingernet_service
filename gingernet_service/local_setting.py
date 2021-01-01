@@ -35,8 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "DjangoUeditor",
-    "api",
-    "backoffice",
     "common",
     "frontend",
     "gingernet",
@@ -77,7 +75,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gingernet_dev',
         'USER': 'root',
-        'PASSWORD': 'Zhiyuxing2019!',
+        'PASSWORD': 'Wenwo2020!',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

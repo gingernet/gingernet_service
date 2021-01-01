@@ -46,6 +46,15 @@ class Banner(BaseModel):
         verbose_name = "轮播图"
         verbose_name_plural = "轮播图"
 
+    def to_dict(self):
+        return {
+            "text_info": self.text_info,
+            "img": str(self.img),
+            "link_url": self.link_url,
+            "banner_mark": self.banner_mark,
+            "is_active": self.is_active,
+        }
+
 
 class Link(BaseModel):
     name = models.CharField(max_length=20, default="", verbose_name=u'名字')
@@ -58,6 +67,14 @@ class Link(BaseModel):
     class Meta:
         verbose_name = "友情链接"
         verbose_name_plural = "友情链接"
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "logo": str(self.logo),
+            "linkurl": self.linkurl,
+        }
 
 
 class NavCat(BaseModel):
@@ -145,7 +162,6 @@ class News(BaseModel):
     author = models.CharField(max_length=70, default="知鱼定制", verbose_name=u'作者')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
 
-
     class Meta:
         verbose_name = "新闻管理"
         verbose_name_plural = "新闻管理"
@@ -165,7 +181,7 @@ class News(BaseModel):
             'author': self.author,
             'is_del': self.is_del,
             'created_at':self.created_at
-            }
+        }
 
 
 class ProductFunc(BaseModel):
@@ -361,12 +377,73 @@ class Product(BaseModel):
         }
 
 
+class SolutionAdvantage(BaseModel):
+    title = models.CharField(max_length=70, default="", verbose_name=u'解决方案优势名称')
+    excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'解决方案风控摘要')
+    img = models.ImageField(upload_to='solution_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'解决方案风控图片')
+    detail = UEditorField(
+        width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
+        upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
+        verbose_name=u'解决方案优势详情'
+    )
+    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
+
+    class Meta:
+        verbose_name = "解决方案优势表"
+        verbose_name_plural = "解决方案优势表"
+
+    def __str__(self):
+        return self.title
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'excerpt': self.excerpt,
+            'img': str(self.img),
+            'detail': self.detail,
+            'is_del': self.is_del,
+            'created_at': self.created_at
+        }
+
+
+class SolutionWindControl(BaseModel):
+    title = models.CharField(max_length=70, default="", verbose_name=u'解决方案风控标题')
+    excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'解决方案风控摘要')
+    img = models.ImageField(upload_to='solution_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'解决方案风控图片')
+    detail = UEditorField(
+        width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
+        upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
+        verbose_name=u'解决方案优势详情'
+    )
+    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
+
+    class Meta:
+        verbose_name = "解决方案风控表"
+        verbose_name_plural = "解决方案风控表"
+
+    def __str__(self):
+        return self.title
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'excerpt': self.excerpt,
+            'img': str(self.img),
+            'detail': self.detail,
+            'is_del': self.is_del,
+            'created_at':self.created_at
+        }
+
+
 class Solution(BaseModel):
     name = models.CharField(max_length=70, default="", verbose_name=u'方案名称')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'方案摘要')
     img = models.ImageField(upload_to='solution_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'方案图片')
     category = models.ForeignKey(
-        Category, related_name='solution_category', blank=True, null=True, on_delete=models.DO_NOTHING, verbose_name=u'方案分类'
+        Category, related_name='solution_category', blank=True, null=True,
+        on_delete=models.DO_NOTHING, verbose_name=u'方案分类'
     )
     views = models.PositiveIntegerField(default=0, verbose_name=u'方案查看次数')
     detail = UEditorField(
@@ -374,6 +451,9 @@ class Solution(BaseModel):
         upload_settings={"imageMaxSize": 1204000}, settings={}, command=None, blank=True,
         verbose_name=u'方案详情'
     )
+    product = models.ManyToManyField(Product, blank=True, null=True, verbose_name=u'产品组合')
+    solution_adv = models.ManyToManyField(SolutionAdvantage, blank=True, null=True, verbose_name=u'解决方案优势')
+    solution_wc = models.ManyToManyField(SolutionWindControl, blank=True, null=True, verbose_name=u'解决方案风控')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
 
     class Meta:

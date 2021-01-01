@@ -1,0 +1,53 @@
+.page-nav{background: #6AB3DC;padding: 10px 0;margin-top: -15px;}
+.page-nav .page-nav-item{text-align: center;color: #fff;cursor: pointer;color: #fff;text-decoration: none;display: block;border-right: 1px solid rgba(255, 255, 255, 0.2);}
+
+.advantage-item{box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);margin-bottom: 20px;}
+.advantage-item .title{height: 64px;font-size: 24px;font-family: Microsoft YaHei;font-weight: bold;color: #FFFFFF;background-color: rgba(106, 179, 220, 1);display: flex;justify-content: center;align-items: center;}
+.advantage-item .name{height: 64px;font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #000000;border-bottom: 1px solid #EDEDED;display: flex;justify-content: center;align-items: center;}
+.advantage-item .introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #555555;display: flex;justify-content: center;align-items: center;padding: 20px 15px;text-align: center;}
+
+.product-function{border-bottom: 1px solid #ccc;padding-bottom: 20px;}
+.product-function .title{position: relative;}
+.product-function .title .num-icon{display:block;font-size: 90px;font-family: Microsoft YaHei;font-weight: 400;color: #F0F5FF;}
+.product-function .title .name{position: absolute;bottom: 27px;left: 5px;font-size: 18px;font-family: Microsoft YaHei;font-weight: 400;color: #232C30;}
+.product-function .introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #767E8F;margin-top: -20px;}
+
+.produce-group{margin-top: 40px;}
+.produce-group .produce-group-item{width: 100%;color: #fff;box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);margin-bottom: 20px;}
+.produce-group .produce-group-item .item-title{width: 100%;display: flex;background-color: rgba(38, 49, 60, 1);justify-content: space-between;align-items: center;padding: 11px 14px;}
+.produce-group .produce-group-item .item-title .item-name-box{display: flex;align-items: center;}
+.produce-group .produce-group-item .item-title .item-name-box .num-icon{font-size: 24px;font-family: Microsoft YaHei;font-weight: bold;color: #26313C;width: 42px;height: 42px;background-color: #fff;line-height: 42px;text-align: center;border-radius: 100%;margin-right: 12px;}
+.produce-group .produce-group-item .item-title .item-name-box .item-name{font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #FFFFFF;}
+.produce-group .produce-group-item .item-title .item-icon-box{cursor: pointer;}
+.produce-group .produce-group-item .item-title .item-icon-box .jian-icon{display: none;}
+.produce-group .produce-group-item .item-introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #555555;padding: 15px 24px;}
+.produce-group .produce-group-item .item-title.show-list{background-color: rgba(106, 179, 220, 1);}
+.produce-group .produce-group-item .item-content{background-color: rgba(245, 248, 251, 1);padding: 30px 70px;}
+.produce-group .produce-group-item .item-content .title{font-size: 18px;font-family: Microsoft YaHei;font-weight: 400;color: #232C30;}
+.produce-group .produce-group-item .item-content .desc{margin-top: 5px;font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #767E8F;}
+.produce-group .produce-group-item .item-content .item-content-item{margin-bottom: 40px;}
+.produce-group .produce-group-item .item-title.show-list .jian-icon{display: inline-block;}
+.produce-group .produce-group-item .item-title.show-list .jia-icon{display: none;}
+.produce-group .produce-group-item .item-content{display: none;}
+.produce-group .produce-group-item:first-child .item-content{display: block;}
+
+@media (min-width: 576px) { 
+    .product-function.product-function-odd{border-right: 1px solid #ccc;}
+}
+
+@media (min-width: 768px) { 
+    .product-function.product-function-odd{border-right: 1px solid #ccc;}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px screen-md-min ） */
+@media (min-width: 992px) { 
+    .product-function.product-function-even{padding-left: 60px;}
+    .product-function.product-function-odd{border-right: 1px solid #ccc;}
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px screen-lg-min ） */
+@media (min-width: 1200px) { 
+    /* 公共模块 module-box */
+    .product-function.product-function-even{padding-left: 90px;}
+    .product-function.product-function-odd{border-right: 1px solid #ccc;}
+}

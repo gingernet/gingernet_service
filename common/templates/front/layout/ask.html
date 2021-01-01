@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<div class="module-box">
+    <div class="module-title">
+        <p>立即咨询</p>
+        <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+    </div>
+    <div class="form-container container">
+        <div class="row">
+            <div class="form-item col-12">
+                <input type="text" class="col-4" maxlength="50" placeholder="*您的姓名">
+                <div class="selec-ipt-box col-7">
+                    <div class="select-box"></div>
+                    <input class="col-10" type="text" placeholder="*您的手机号">
+                </div>
+            </div>
+            <div class="form-item col-12">
+                <input type="text" class="col-4" maxlength="50" placeholder="您的邮箱">
+                <div class="selec-ipt-box col-7">
+                    <div class="select-box"></div>
+                    <input class="col-10" type="text" placeholder="您的微信账号(选填)">
+                </div>
+            </div>
+            <div class="form-item col-12">
+                <textarea class="col-12" rows="3" placeholder="请告知您需要咨询的内容"></textarea>
+            </div>
+            <button class="form-btn-sub">提交</button>
+        </div>
+    </div>
+</div>

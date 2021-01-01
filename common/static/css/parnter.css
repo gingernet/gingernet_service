@@ -1,0 +1,22 @@
+/* 合作企业 company-list-box */
+.company-list-box .introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #333333;line-height: 22px;text-align: center;margin-top: 23px;margin-bottom: 30px;}
+.company-list-box .company-item img{display: block;width: 100%;}
+.company-list-box .row{ margin-left: 0; }
+/* 合作媒体 */
+.media-list-box .introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #333333;line-height: 22px;text-align: center;margin-top: 23px;margin-bottom: 30px;}
+.media-list-box .media-item img{display: block;width: 100%;}
+/* 合作客户 */
+.client-box-container .introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #333333;line-height: 22px;text-align: center;margin-top: 20px;}
+/* 我们的客户 */
+.client-box{margin: 40px auto 0;height: 130px;font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #555555;}
+.client-box .owl-item{height: 108px;background: #FFFFFF;border-radius: 4px 4px 4px 4px;box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);display: flex;justify-content: center;align-items: center;}
+.client-box .owl-nav button{position: absolute;}
+.client-box .owl-nav button span{display: flex;width: 30px;height: 60px;background-color:#69b2dc;font-size: 35px;color: #fff;justify-content: center;align-items: center;}
+.client-box .owl-nav button.owl-prev{left: -30px;top: 26px;}
+.client-box .owl-nav button.owl-next{right: -30px;top: 26px;}
+.client-box .owl-stage-outer{height: 130px;align-items: center;padding: 10px 5px;background-color: #fff;}
+
+
+
+
+

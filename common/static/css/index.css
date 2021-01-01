@@ -1,0 +1,191 @@
+/* 头图 banner */
+.banner-container{width: 100%;position: relative;}
+.banner-container img{display: block;width: 100%;}
+.banner-container .hd{position: absolute;width: 60px;bottom: 10px;left: 50%;margin-left: -30px;}
+.banner-container .hd li{width: 9px;height: 9px;background-color: #ddd;border-radius: 100%;margin-right: 5px;float: left;}
+.banner-container .hd li.on{background-color: #69b2dc;}
+/* 一直不懈努力 serve-box */
+/* .serve-box{margin: 0 auto;display: flex;flex-wrap: wrap;justify-content: space-between;} */
+.serve-box li .server-item{box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);box-sizing: border-box;margin-top: 40px;padding: 40px 0;}
+.serve-box li .img-box{width: 120px;height: 120px;border-radius: 100%;margin: 0 auto;}
+.serve-box li .img-box img{width: 100%;display: block;}
+.serve-box li .serve-item-title{font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #333333;text-align: center;margin-top: 28px;}
+.serve-box li .serve-item-content{padding: 0 15px;margin-top: 18px;font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #555555;line-height: 22px;text-align: center;}
+/* 全国领先的区块链技术服务提供商 */
+.cutting-box{width: 80%;margin: 37px auto 0;display: flex;flex-wrap: wrap;justify-content: space-between;}
+.cutting-box li{flex: 1;max-width: 100%;display: flex;justify-content: center;margin-bottom: 40px;}
+.cutting-box li div{width: 134px;height: 121px;background-color: #fff;border-radius: 6px;box-sizing: border-box;padding-top: 25px;}
+.cutting-box li div img{display: block;margin: 0 auto;}
+.cutting-box li div p{font-size: 14px;font-family: Microsoft YaHei;font-weight: bold;color: #303030;margin-top: 15px;text-align: center;}
+/* 技术解决方案 */
+.technology-box{margin: 40px auto 0;}
+.technology-box li{margin-bottom: 20px;transition: all 0.4s ease;position: relative;overflow: hidden;}
+.technology-box li img{width: 100%;display: block;}
+.technology-box li:hover img{transform: scale(1.2);}
+/* 媒体动态 */
+.media-box{margin: 40px auto 0;display: flex;flex-wrap: wrap;justify-content: space-between;}
+.media-box li{margin-bottom: 20px;}
+.media-box li .media-item{border-radius: 4px 4px 4px 4px;box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);}
+.media-box li img{width: 100%;display: block;}
+.media-box li div.media-text{box-sizing: border-box;padding: 22px 30px 20px;}
+.media-box li div.media-text p.media-title{font-size: 18px;font-family: Microsoft YaHei;font-weight: 400;color: #0D1A26;margin-bottom: 8px;}
+.media-box li div.media-text p.media-content{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #0D1A26;line-height: 22px;}
+/* 我们的客户 */
+/* .client-container{margin: 40px auto 0;height: 108px;display: flex;justify-content: space-between;align-items: center;padding-bottom: 37px;}
+.client-container .tab-btn{width: 30px;min-width: 30px;height: 60px;background-color: #69b2dc;display: flex;justify-content: center;align-items: center;}
+.client-container .client-box{flex: 1;height: 108px;padding: 0 17px;}
+.client-container .client-box li{font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #555555;display: flex;justify-content: center;align-items: center;border-radius: 4px;background-color: #fff;margin: 0px 12px;flex-shrink:0;} */
+.client-box{margin: 40px auto 0;height: 108px;font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #555555;}
+.client-box .owl-item{height: 108px;background: #FFFFFF;border-radius: 4px 4px 4px 4px;box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);display: flex;justify-content: center;align-items: center;}
+.client-box .owl-nav button{position: absolute;}
+.client-box .owl-nav button span{display: flex;width: 30px;height: 60px;background-color:#69b2dc;font-size: 35px;color: #fff;justify-content: center;align-items: center;}
+.client-box .owl-nav button.owl-prev{left: -30px;top: 26px;}
+.client-box .owl-nav button.owl-next{right: -30px;top: 26px;}
+
+
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+/* 小屏幕（平板，大于等于 768px screen-sm-min ） */
+@media (min-width: 768px) { 
+	.nav-container .nav-box-content .nav-box li .project-option-list{left: 11%;}
+	
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px screen-md-min ） */
+@media (min-width: 992px) { 
+    .module-box .module-title p{font-size: 30px;}
+    .nav-container .nav-box-content{justify-content: space-between;}
+    .nav-container .nav-box-content .nav-box li .project-option-list{left: 12%;}
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px screen-lg-min ） */
+@media (min-width: 1200px) { 
+   /* 公共模块 module-box */
+   .module-box .module-title p{font-size: 30px;}
+   .nav-container .nav-box-content{justify-content: space-between;}
+   .nav-container .nav-box-content .nav-box li .project-option-list{left: 14%;}
+}
+
+
+.portfolio-area .project-nav li:hover{ 
+	background: #69B2DC;
+    color: #fff;
+}
+.project-nav li.active{
+    background: #69B2DC;
+    color: #fff;
+}
+.project-nav li:last-child{
+	margin-right:0px;
+}
+.portfolio-main .portfolio-single {
+	position: relative;
+	overflow: hidden;
+}
+.portfolio-img{
+	position:relative;
+	overflow:hidden;
+}
+.portfolio-img img{
+	position:relative;
+	transition: all 0.4s ease;
+	max-width:100%;
+}
+.portfolio-main .portfolio-img:hover img{
+	transform:scale(1.2);
+}
+.portfolio-single:hover .portfolio-img::before{
+	left:0;
+	visibility:visible;
+}
+.portfolio-img::before {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 50%;
+	background: #0000006e;
+	left: -100%;
+	transition: all 0.4s ease;
+	visibility: hidden;
+	z-index: 10;
+}
+.portfolio-img::after {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 50%;
+	background: #0000006e;
+	right: -100%;
+	bottom: 0;
+	transition:all 0.4s ease;
+	visibility:hidden;
+}
+.portfolio-single:hover .portfolio-img::after{
+	right:0;
+	visibility:visible;
+}
+.portfolio-main .portfolio-content {
+	position: absolute;
+	top: 100px;
+	left: 0px;
+	visibility: hidden;
+	transition: all 0.4s ease;
+	text-align: center;
+	z-index: 99999999;
+	opacity: 0;
+	transform: translateX(100%);
+	padding: 0 10px;
+}
+.portfolio-single:hover .portfolio-content{
+	transform: translateX(0%);
+}
+.portfolio-content h4 {
+	line-height: 40px;
+}
+.portfolio-content h4 a {
+	font-size: 20px;
+	color: #fff;
+	font-weight: 700;
+}
+.portfolio-content h4 a:hover{
+	color:#69B2DC;
+}
+.portfolio-content p {
+	font-size: 16px;
+	color: #ffffffd1;
+	text-align: center;
+}
+.portfolio-single:hover .portfolio-content{
+	visibility:visible;
+	opacity:1;
+} 
+.portfolio-single .p-button {
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+	font-size: 17px;
+	color: #fff;
+	transition: all 0.4s ease;
+	visibility: hidden;
+	opacity: 0;
+	transform: translateX(-100%);
+	width: 50px;
+	height: 50px;
+	background: #69B2DC;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 100px;
+	transition: all 0.4s ease;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+}
+.portfolio-single:hover .p-button{
+	opacity:1;
+	visibility:visible;
+	transform: translateX(0%);
+}
+.portfolio-single .p-button:hover{
+	background:#fff;
+	color:#26313C;
+}

@@ -1,0 +1,77 @@
+{% load staticfiles ginger_tags %}
+<div class="nav-container container">
+    <div class="row nav-box-content col-12" style="width: 100%;">
+        <div class="mobile-nav col-2">
+            <div class="icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-4"><img src="{% static 'images/logo-icon.png'%}" alt="logo-icon" style="width: 100%;display: block;"></div>
+        <ul class="nav-box col-lg-8 col-md-9 col-sm-8 col-12">
+            <li><a href="{% url 'index' %}" class="nav-item">首页</a></li>
+             {% for item in navcat_category_list %}
+                {% if item.navcat.nav_mark == "product" %}
+                <li class="nav-project">
+                    <p>{{ item.navcat.name }} <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="down-icon"></p>
+                    <div class="project-option-list">
+                        {% for category in item.category_lst  %}
+                            <a href="{% url 'index' %}product-{{ category.id }}.html" target="_blank">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+                {% elif item.navcat.nav_mark == "solution"  %}
+                <li class="plan-project">
+                    <p>{{ item.navcat.name }} <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="down-icon"></p>
+                     <div class="project-option-list plan-option-list">
+                        {% for category in item.category_lst  %}
+                            <a href="{% url 'index' %}solution-{{ category.id }}.html" target="_blank">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+                {% else %}
+                   <li><a href="./research.html" class="nav-item">{{ item.navcat.name }} </a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="nav-list col-12">
+        <div class="nav-list-item"><a href="{% url 'index' %}">首页</a></div>
+         {% for item in navcat_category_list %}
+            {% if item.navcat.nav_mark == "product" %}
+                <div class="nav-list-item child-list-item child-list-item-1">
+                    <a href="javascript:;">{{ item.navcat.name }}</a>
+                    <div class="list-icon">
+                        <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="down-icon">
+                        <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="up-icon" style="transform: rotate(180deg);">
+                    </div>
+                </div>
+                <div class="nav-item-list nav-item-list-1">
+                    <ul>
+                         {% for category in item.category_lst  %}
+                            <li><a href="./project.html#">|-&nbsp;&nbsp;{{ category.name }}</a></li>
+                         {% endfor %}
+                    </ul>
+                </div>
+             {% elif item.navcat.nav_mark == "solution"  %}
+                <div class="nav-list-item child-list-item child-list-item-2">
+                    <a href="javascript:;">{{ item.navcat.name }}</a>
+                    <div class="list-icon">
+                        <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="down-icon">
+                        <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="up-icon" style="transform: rotate(180deg);">
+                    </div>
+                </div>
+                <div class="nav-item-list nav-item-list-2">
+                    <ul>
+                        {% for category in item.category_lst  %}
+                            <li><a href="./scheme.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+             {% else %}
+                <div class="nav-list-item"><a href="./research.html#">{{ item.navcat.name }}</a></div>
+             {% endif %}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.news-content-box{padding-bottom: 80px;}
+.news-content-box .hd{display: flex;}
+.news-content-box .hd li{border: 1px solid #69b2dc;border-radius: 3px;margin-top: 43px;margin-bottom: 43px;font-size: 18px;font-family: Microsoft YaHei;font-weight: 400;color: #333333;text-align: center;cursor: pointer;padding: 10px 15px;}
+.news-content-box .hd li.on{color: #fff;background-color: #69b2dc;}
+.news-content-box .bd .news-list li{display: flex;justify-content: space-between;padding: 20px 10px;border-bottom: 1px solid rgba(244, 244, 244, 1);}
+.news-content-box .bd .news-list li:hover{background-color: #f4f4f4;}
+.news-content-box .bd .news-list li .news-list-item{display: flex;flex-direction: column;justify-content: space-between;}
+.news-content-box .bd .news-list li .news-list-item .title{font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #69B2DC;}
+.news-content-box .bd .news-list li .news-list-item .creatTime{font-size: 18px;font-family: Microsoft YaHei;font-weight: bold;color: #666666;display: flex;align-items: center;}
+.news-content-box .bd .news-list li .news-list-item .creatTime img{margin-right: 7px;}
+.news-content-box .bd .news-list li .news-list-item .article-introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: bold;color: #333333;line-height: 22px;text-indent: 2em;}
+.news-content-box .bd .news-list li .news-list-item .seeDetail{display: block;width: 112px;height: 31px;background-color: rgba(105, 178, 220, 1);font-size: 16px;font-family: Microsoft YaHei;font-weight: bold;color: #FFFFFF;line-height: 31px;text-align: center;text-decoration: none;}
+.news-content-box .bd .news-list li .right-img{display: flex;align-items: center;}
+.news-content-box .bd .news-list li .right-img img{display: block;width: 100%;}
+.news-content-box .bd .page-box{margin-top: 45px;}
+.news-content-box .bd .page-box ul{display: flex;justify-content: center;align-items: center;}
+.news-content-box .bd .page-box ul li a{display: block;font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #333333;line-height: 14px;padding: 12px;text-decoration: none;border: 1px solid #eee;cursor: pointer;margin: 0 8px;}
+.news-content-box .bd .page-box ul li a.on{background-color: rgba(105, 178, 220, 1);color: #fff;}
+
+
+
+

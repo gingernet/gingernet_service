@@ -3,7 +3,8 @@ from gingernet.models import (
     Banner, Link, Category, NavCat, ProductDocs,
     ProductAdvantage, ProductFunc, Costomer, Product,
     News, Solution, ContactUs, OnlineMsg, ApiAuth, Partner,
-    CompanyIntro, TechTeam, DevHis, Research, CompanyAdvantage, CompanyValue
+    CompanyIntro, TechTeam, DevHis, Research, CompanyAdvantage,
+    CompanyValue, SolutionAdvantage, SolutionWindControl
 )
 
 @admin.register(Partner)
@@ -128,6 +129,22 @@ class ContactUsPhotoAdmin(admin.ModelAdmin):
     list_per_page = 50
     ordering = ('-created_at',)
     list_display_links = ('id', 'phone')
+
+
+@admin.register(SolutionAdvantage)
+class SolutionAdvantageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'excerpt', 'created_at')
+    list_per_page = 50
+    ordering = ('-created_at',)
+    list_display_links = ('id', 'title')
+
+
+@admin.register(SolutionWindControl)
+class SolutionWindControlAdvantageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'excerpt', 'created_at')
+    list_per_page = 50
+    ordering = ('-created_at',)
+    list_display_links = ('id', 'title')
 
 
 @admin.register(Solution)
