@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'frontend.views.global_variable',
             ],
         },
     },
@@ -76,10 +77,10 @@ WSGI_APPLICATION = 'gingernet_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gingernet_dev',
+        'NAME': 'gingernet',
         'USER': 'root',
         'PASSWORD': 'Wenwo2020!',
-        'HOST': 'localhost',
+        'HOST': '60.205.1.144',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",

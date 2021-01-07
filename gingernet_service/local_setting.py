@@ -73,8 +73,8 @@ WSGI_APPLICATION = 'gingernet_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gingernet_dev',
-        'USER': 'root',
+        'NAME': 'gingernet',
+        'USER': '60.205.1.144',
         'PASSWORD': 'Wenwo2020!',
         'HOST': 'localhost',
         'PORT': '3306',
