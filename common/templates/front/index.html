@@ -76,7 +76,7 @@
                                             <img src="{% url 'index' %}media/{{ solution.img }}" alt="#">
                                         </div>
                                         <div class="portfolio-content">
-                                            <h4><a href="mayilian_Baas_pingtai.html">{{ solution.name }}</a></h4>
+                                            <h4><a href="{% url 'index' %}solution-{{ solution.id }}.html">{{ solution.name }}</a></h4>
                                             <p>{{ solution.excerpt }}</p>
                                         </div>
                                     </div>

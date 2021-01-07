@@ -70,7 +70,7 @@
                     </ul>
                 </div>
              {% else %}
-                <div class="nav-list-item"><a href="{% url 'index' %}{{ navcat.nav_mark }}">{{ item.navcat.name }}</a></div>
+                <div class="nav-list-item"><a href="{% url 'index' %}{{ item.navcat.nav_mark }}">{{ item.navcat.name }}</a></div>
              {% endif %}
         {% endfor %}
     </div>
