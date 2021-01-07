@@ -31,7 +31,7 @@
                     </div>
                 </li>
                 {% else %}
-                   <li><a href="./research.html" class="nav-item">{{ item.navcat.name }} </a></li>
+                   <li><a href="{% url 'index' %}{{ item.navcat.nav_mark }}" class="nav-item">{{ item.navcat.name }} </a></li>
                 {% endif %}
             {% endfor %}
         </ul>
@@ -41,7 +41,7 @@
          {% for item in navcat_category_list %}
             {% if item.navcat.nav_mark == "product" %}
                 <div class="nav-list-item child-list-item child-list-item-1">
-                    <a href="javascript:;">{{ item.navcat.name }}</a>
+                    <a href="#">{{ item.navcat.name }}</a>
                     <div class="list-icon">
                         <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="down-icon">
                         <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="up-icon" style="transform: rotate(180deg);">
@@ -50,13 +50,13 @@
                 <div class="nav-item-list nav-item-list-1">
                     <ul>
                          {% for category in item.category_lst  %}
-                            <li><a href="./project.html#">|-&nbsp;&nbsp;{{ category.name }}</a></li>
+                            <li><a href="{% url 'index' %}product-{{ category.id }}.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
                          {% endfor %}
                     </ul>
                 </div>
              {% elif item.navcat.nav_mark == "solution"  %}
                 <div class="nav-list-item child-list-item child-list-item-2">
-                    <a href="javascript:;">{{ item.navcat.name }}</a>
+                    <a href="#">{{ item.navcat.name }}</a>
                     <div class="list-icon">
                         <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="down-icon">
                         <img src="{% static 'images/down_icon.png'%}" alt="down_icon" class="up-icon" style="transform: rotate(180deg);">
@@ -65,12 +65,12 @@
                 <div class="nav-item-list nav-item-list-2">
                     <ul>
                         {% for category in item.category_lst  %}
-                            <li><a href="./scheme.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
+                            <li><a href="{% url 'index' %}solution-{{ category.id }}.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
              {% else %}
-                <div class="nav-list-item"><a href="./research.html#">{{ item.navcat.name }}</a></div>
+                <div class="nav-list-item"><a href="{% url 'index' %}{{ navcat.nav_mark }}">{{ item.navcat.name }}</a></div>
              {% endif %}
         {% endfor %}
     </div>

@@ -61,11 +61,11 @@
     <div class="module-box gray-module-box page-nav-item-1-end">
         <div class="module-title">
             <p>方案架构及详情</p>
-            <img src="./images/title-icon.png" alt="title-icon">
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
         </div>
         <div class="container" style="margin-top: 40px;">
             <div class="row">
-                <img src="./images/scheme_detail.png" alt="" style="display: block;width: 100%;">
+                <img src="{% url 'index' %}media/{{ solution.img }}" alt="" style="display: block;width: 100%;">
             </div>
         </div>
     </div>
@@ -85,274 +85,74 @@
             })
         }
     </script>
+
     <!-- 产品组合 -->
     <div class="module-box page-nav-item-3-end">
         <div class="module-title">
             <p>产品组合</p>
-            <img src="./images/title-icon.png" alt="title-icon">
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
         </div>
         <div class="produce-group container">
             <div class="row">
-                <div class="produce-group-item">
-                    <div class="item-title show-list">
-                        <div class="item-name-box">
-                            <p class="num-icon">01</p>
-                            <p class="item-name">现货交易系统</p>
+                {% for product in  solution.product.all %}
+                    <div class="produce-group-item">
+                        <div class="item-title show-list">
+                            <div class="item-name-box">
+                                <p class="item-name">{{ product.name }}</p>
+                            </div>
+                            <div class="item-icon-box">
+                                <div onclick='closeItem()'>
+                                    <img src="{% static 'images/jian_icon.png' %}" alt="" class="jian-icon" >
+                                </div>
+                                <div onclick="openItem()">
+                                    <img src="{% static 'images/jia_icon.png' %}" alt="" class="jia-icon">
+                                </div>
+                            </div>
                         </div>
-                        <div class="item-icon-box">
-                            <div onclick='closeItem()'>
-                                <img src="./images/jian_icon.png" alt="" class="jian-icon" >
-                            </div>
-                            <div onclick="openItem()">
-                                <img src="./images/jia_icon.png" alt="" class="jia-icon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-introduce">功能成熟、应用广泛。强大的内存撮合引擎保证高并发量交易；完善的前后台系统，系统安全稳定，可保障平台和用户双方的隐私安全、系统安全和资产安全。支持策略委托，支持国际化。</div>
-                    <div class="item-content">
-                        <div class="row">
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">高性能撮合引擎</p>
-                                <p class="desc">内存撮合强大，每个交易对5万+TPS</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">专业交易</p>
-                                <p class="desc">提供自定义和第三方两种K线，技术分析和划线工具支持策略委托和API下单</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">配套功能</p>
-                                <p class="desc">配套财务系统、风控体系，支持所有主流币种及其代币，配套后台审核和运营CMS系统，快速稳定的系统部署和交付</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">多种交易模式</p>
-                                <p class="desc">支持法币、币币交易等多种交易形式，支持法币直接购买，且无最小限制</p>
+                        <div class="item-introduce">{{ product.excerpt }}</div>
+                        <div class="item-content">
+                            <div class="row">
+                                {% for product_func in  product.product_func.all %}
+                                <div class="col-12 col-md-6 item-content-item">
+                                    <p class="title">{{ product_func.name }}</p>
+                                    <p class="desc">{{ product_func.excerpt }}</p>
+                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="produce-group-item">
-                    <div class="item-title">
-                        <div class="item-name-box">
-                            <p class="num-icon">02</p>
-                            <p class="item-name">杠杆交易系统</p>
-                        </div>
-                        <div class="item-icon-box">
-                            <div onclick='closeItem()'>
-                                <img src="./images/jian_icon.png" alt="" class="jian-icon" >
-                            </div>
-                            <div onclick="openItem()">
-                                <img src="./images/jia_icon.png" alt="" class="jia-icon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-introduce">现货杠杆交易系统，竞价交易机制，与现货交易共享盘口深度，为用户提供中短期借贷资金周转支持；有强大的内存撮合引擎保证高并发量的交易，完善的风险防范机制，保证平台零亏损。</div>
-                    <div class="item-content">
-                        <div class="row">
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">杠杆借贷</p>
-                                <p class="desc">提供中短期借贷周转数字货币，用户可通过平台借币超额配置资产 ，最高5倍杠杆</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">专业交易</p>
-                                <p class="desc">提供第三方和自定义两种K线，技术分析和画线工具，支持策略委托和条件委托，支持API</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">安全保障</p>
-                                <p class="desc">每笔借贷会经过系统借贷审计，风险率实时计算，对高杠杆重亏损用户及时提醒，必要时强制平仓</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="produce-group-item">
-                    <div class="item-title">
-                        <div class="item-name-box">
-                            <p class="num-icon">03</p>
-                            <p class="item-name">场外交易系统</p>
-                        </div>
-                        <div class="item-icon-box">
-                            <div onclick='closeItem()'>
-                                <img src="./images/jian_icon.png" alt="" class="jian-icon" >
-                            </div>
-                            <div onclick="openItem()">
-                                <img src="./images/jia_icon.png" alt="" class="jia-icon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-introduce">3种商家认证模式，支持线上打币，线下支付法币，方便资金出入场，严格的KYC认证，保证用户间安全交易、出金安全</div>
-                    <div class="item-content">
-                        <div class="row">
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">挂牌交易机制</p>
-                                <p class="desc">商家保证金制度，免费流动性支持</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">系统安全保障</p>
-                                <p class="desc">出入金安全审计，用户KYC，币商保证金制度</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">用户权益保障</p>
-                                <p class="desc">用户隐私和支付信息加密，支持双向申诉渠道</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="produce-group-item">
-                    <div class="item-title">
-                        <div class="item-name-box">
-                            <p class="num-icon">04</p>
-                            <p class="item-name">合约交易系统</p>
-                        </div>
-                        <div class="item-icon-box">
-                            <div onclick='closeItem()'>
-                                <img src="./images/jian_icon.png" alt="" class="jian-icon" >
-                            </div>
-                            <div onclick="openItem()">
-                                <img src="./images/jia_icon.png" alt="" class="jia-icon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-introduce">功能成熟，支持双向开仓和逐仓管理。有完备的风险防范制度，并可按指数价格交割，最大限度保护用户的权益和资产安全。强大的内存撮合引擎保证高并发量交易，支持API下单。</div>
-                    <div class="item-content">
-                        <div class="row">
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">金融期货交易</p>
-                                <p class="desc">交易品种可自行设计，合约双向开仓，支持定期和永续两大类合约品种，支持逐仓和全仓模式</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">保证金制度</p>
-                                <p class="desc">抵押保证金开仓，平台对每个品种设杠杆倍数上限，用户开仓时自定义倍数</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">强制平仓制度</p>
-                                <p class="desc">当风险准备金无力承担强制平仓单穿仓亏损时，会从盈利率最高的用户仓位开始，依次强减，直至穿仓亏损全部消除</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">强制减仓制度</p>
-                                <p class="desc">支持法币、币币交易等多种交易形式，支持法币直接购买，且无最小限制</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="produce-group-item">
-                    <div class="item-title">
-                        <div class="item-name-box">
-                            <p class="num-icon">05</p>
-                            <p class="item-name">ETF交易系统</p>
-                        </div>
-                        <div class="item-icon-box">
-                            <div onclick='closeItem()'>
-                                <img src="./images/jian_icon.png" alt="" class="jian-icon" >
-                            </div>
-                            <div onclick="openItem()">
-                                <img src="./images/jia_icon.png" alt="" class="jia-icon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-introduce">通过组合管理（调仓收费）、无募集发行、流动性等服务实现ETF功能，可提供定制化和SaaS服务，具备杠杆配置、申购与赎回、权重分配、多维度报表等功能。</div>
-                    <div class="item-content">
-                        <div class="row">
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">系统功能多样</p>
-                                <p class="desc">包含杠杆、正反向ETF，NAV核算，高效Rebalance，折价溢价等系统功能</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">使用安全可靠</p>
-                                <p class="desc">任何时候都可以以下一个NAV申购赎回，侧面提供部分日级别有效流动性</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">部署方式灵活</p>
-                                <p class="desc">可定制化、可SaaS部署，交易所可依据投入成本选择，接入时间短效率高</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">交易机会</p>
-                                <p class="desc">增加更多的认购并卖出的套利机会，吸引更多投资者创建份额</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="produce-group-item">
-                    <div class="item-title">
-                        <div class="item-name-box">
-                            <p class="num-icon">06</p>
-                            <p class="item-name">流动性系统</p>
-                        </div>
-                        <div class="item-icon-box">
-                            <div onclick='closeItem()'>
-                                <img src="./images/jian_icon.png" alt="" class="jian-icon" >
-                            </div>
-                            <div onclick="openItem()">
-                                <img src="./images/jia_icon.png" alt="" class="jia-icon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item-introduce">现货杠杆交易系统，竞价交易机制，与现货交易共享盘口深度，为用户提供中短期借贷资金周转支持；有强大的内存撮合引擎保证高并发量的交易，完善的风险防范机制，保证平台零亏损。</div>
-                    <div class="item-content">
-                        <div class="row">
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">领先的流动性服务</p>
-                                <p class="desc">提供100+主流币种的币对、热门币对的流动性，顶级的买卖深度，连续的K线图</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">多样化的功能</p>
-                                <p class="desc">包含自定义参数、金融级别监控、专业的风控管理、完善的报表等功能</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">专业的解决方案</p>
-                                <p class="desc">提供主流币交易流动性、平台币流动性解决方案</p>
-                            </div>
-                            <div class="col-12 col-md-6 item-content-item">
-                                <p class="title">交易成本低</p>
-                                <p class="desc">具有竞争性的阶梯式交易费率，交易量越大手续费越低</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+
     <!-- 方案优势 -->
     <div class="module-box gray-module-box page-nav-item-4-end">
         <div class="module-title">
             <p>方案优势</p>
-            <img src="./images/title-icon.png" alt="title-icon">
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
         </div>
         <div class="container" style="margin-top: 50px;">
             <div class="row">
-                <div class="col-12 col-sm-6 product-function product-function-odd">
-                    <div class="title">
-                        <p class="num-icon">01</p>
-                        <p class="name">商业模式清晰</p>
-                    </div>
-                    <p class="introduce">坚持以服务B端客户为核心，专注为全球客户提供区块链技术服务，自身未开设且未来也不会开设交易所，与客户只存在服务和合作关系，不会产生竞争关系。</p>
-                </div>
-                <div class="col-12 col-sm-6 product-function product-function-even">
-                    <div class="title">
-                        <p class="num-icon">02</p>
-                        <p class="name">部署方式灵活</p>
-                    </div>
-                    <p class="introduce">支持私有化和SaaS部署，简单快速完成整套交易所系统的部署，部署模块币币交易、杠杆交易、场外交易、合约交易、ETF等功能模块可选择性部署。</p>
-                </div>
-                <div class="col-12 col-sm-6 product-function product-function-odd">
-                    <div class="title">
-                        <p class="num-icon">03</p>
-                        <p class="name">共享交易流动性</p>
-                    </div>
-                    <p class="introduce">聚合了服务过的300多家生态交易所流量的流动性，且提供OTC共享流动性，拥有智能做市服务；此外，还提供独立的衍生品流动性管理解决方案。</p>
-                </div>
-                <div class="col-12 col-sm-6 product-function product-function-even">
-                    <div class="title">
-                        <p class="num-icon">04</p>
-                        <p class="name">风控及安全性高</p>
-                    </div>
-                    <p class="introduce">拥有完善的风控安全体系，智能合约/代码审计，行为态势感知，职务作恶防控，并且与降维安全、CertiK、北京链安、成都链安等国内外多家安全机构达成深度战略合作，定期对系统进行安全渗透测试，保障交易所资产安全。</p>
-                </div>
-                <div class="col-12 col-sm-6 product-function product-function-odd">
-                    <div class="title">
-                        <p class="num-icon">05</p>
-                        <p class="name">多维度客户服务</p>
-                    </div>
-                    <p class="introduce">提供售前一对一专属培训、售中专人专项指导、售后7*24小时人工在线支持与服务，秒级响应、问题结果多种方式回复。</p>
-                </div>
+                {% for solution_adv in solution.solution_adv.all %}
+                    {% if  solution_adv.position == 'left'%}
+                        <div class="col-12 col-sm-6 product-function product-function-odd">
+                            <div class="title">
+                                <p class="num-icon">0{{ solution_adv.sequence }}</p>
+                                <p class="name">{{ solution_adv.title }}</p>
+                            </div>
+                            <p class="introduce">{{ solution_adv.excerpt }}</p>
+                        </div>
+                    {% else %}
+                        <div class="col-12 col-sm-6 product-function product-function-even">
+                            <div class="title">
+                                <p class="num-icon">0{{ solution_adv.sequence }}</p>
+                                <p class="name">{{ solution_adv.title }}</p>
+                            </div>
+                            <p class="introduce">{{ solution_adv.excerpt }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -360,38 +160,19 @@
     <div class="module-box page-nav-item-5-end">
         <div class="module-title">
             <p>风控体系</p>
-            <img src="./images/title-icon.png" alt="title-icon">
+            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
         </div>
         <div class="container" style="margin-top: 40px;">
             <div class="row">
+                {% for solution_wc in solution.solution_wc.all %}
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="advantage-item">
-                        <p class="title">01</p>
-                        <p class="name">风控100%全覆盖</p>
-                        <p class="introduce">全方位风险管理，三重财务对账，资金安全实时监控，严重报警主动干预。资产流转智能监控异常报警，提现阻断，DDos防御、流量清洗等30+项防御机制</p>
+                        <p class="title">{{ solution_wc.sequence }}</p>
+                        <p class="name">{{ solution_wc.title }}</p>
+                        <p class="introduce">{{ solution_wc.excerpt }}</p>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="advantage-item">
-                        <p class="title">02</p>
-                        <p class="name">智能合约/代码审计</p>
-                        <p class="introduce">由第三方机构出具专业的审计报告，采用形式化验证技术，自动扫描代码安全性；数十项安全检测项目，排查安全隐患，避免黑客攻击，保证智能合约安全性</p>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="advantage-item">
-                        <p class="title">03</p>
-                        <p class="name">行为态势感知</p>
-                        <p class="introduce">对用户行为进行大数据分析，从用户、管理员、资产、服务器多维度无死角监测，做到特殊用户打标，风险及时发现威胁，主动防御高危行为，系统攻击分析和主动拦截</p>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="advantage-item">
-                        <p class="title">04</p>
-                        <p class="name">职务作恶防控</p>
-                        <p class="introduce">高级别操作权限隔离，高危操作多重确认。异常登录审核、尝试越权操作、服务端高频访问、前序行为异常等管理员行为自查</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

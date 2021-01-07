@@ -6,6 +6,7 @@ from common.models import BaseModel
 from DjangoUeditor.models import UEditorField
 
 DEL_CHOICES = [(x, x) for x in ['YES', 'NO']]
+POS_CHOICES = [(x, x) for x in ['Left', 'Right']]
 
 
 class ApiAuth(BaseModel):
@@ -186,8 +187,10 @@ class News(BaseModel):
 
 class ProductFunc(BaseModel):
     name = models.CharField(max_length=70, default="", verbose_name=u'产品名称')
+    sequence = models.PositiveIntegerField(default=0, verbose_name=u'序号')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
-    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
+    position = models.CharField(max_length=16, choices=POS_CHOICES, default='NO', verbose_name=u'是否删除')
+    is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='Left', verbose_name=u'是否删除')
 
     class Meta:
         verbose_name = "产品功能表"
@@ -200,6 +203,7 @@ class ProductFunc(BaseModel):
         return {
             'id': self.id,
             'name': self.name,
+            'position': self.position,
             'excerpt': self.excerpt,
             'is_del': self.is_del,
             'created_at': self.created_at
@@ -208,6 +212,7 @@ class ProductFunc(BaseModel):
 
 class ProductAdvantage(BaseModel):
     name = models.CharField(max_length=70, default="", verbose_name=u'名称')
+    sequence = models.PositiveIntegerField(default=0, verbose_name=u'序号')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')
 
@@ -380,6 +385,8 @@ class Product(BaseModel):
 class SolutionAdvantage(BaseModel):
     title = models.CharField(max_length=70, default="", verbose_name=u'解决方案优势名称')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'解决方案风控摘要')
+    sequence = models.PositiveIntegerField(default=0, verbose_name=u'序号')
+    position = models.CharField(max_length=16, choices=POS_CHOICES, default='NO', verbose_name=u'位置')
     img = models.ImageField(upload_to='solution_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'解决方案风控图片')
     detail = UEditorField(
         width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",
@@ -410,6 +417,7 @@ class SolutionAdvantage(BaseModel):
 class SolutionWindControl(BaseModel):
     title = models.CharField(max_length=70, default="", verbose_name=u'解决方案风控标题')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'解决方案风控摘要')
+    sequence = models.PositiveIntegerField(default=0, verbose_name=u'序号')
     img = models.ImageField(upload_to='solution_img/%Y/%m/%d/', blank=True, null=True, verbose_name=u'解决方案风控图片')
     detail = UEditorField(
         width=800, height=500, toolbars="full", imagePath="img/", filePath="upfile/",

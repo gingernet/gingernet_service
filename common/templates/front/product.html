@@ -28,53 +28,25 @@
     </div>
     <div class="container" style="margin-top: 50px;">
         <div class="row">
-            <div class="col-12 col-sm-6 product-function product-function-odd">
-                <div class="title">
-                    <p class="num-icon">{{ product.product_func }}</p>
-                    <p class="name">撮合系统</p>
-                </div>
-                <p class="introduce">基于内存设计的撮合系统，对顾客所下订单进行公平合理的排列和撮合功能，保证撮合算法的公平高效以及扩展性</p>
-            </div>
-
-            <div class="col-12 col-sm-6 product-function product-function-even">
-                <div class="title">
-                    <p class="num-icon">02</p>
-                    <p class="name">币币交易</p>
-                </div>
-                <p class="introduce">提供平台内盈利的良好机会，降低兑换币种之间的成本，不违背国家的政策</p>
-            </div>
-
-            <div class="col-12 col-sm-6 product-function product-function-odd">
-                <div class="title">
-                    <p class="num-icon">03</p>
-                    <p class="name">法币交易</p>
-                </div>
-                <p class="introduce">数字货币和法定货币可以直接交易和支付的交易所系统。可直接对接本地银行。仅为数字交易合法合规的国家和地区提供。</p>
-            </div>
-
-            <div class="col-12 col-sm-6 product-function product-function-even">
-                <div class="title">
-                    <p class="num-icon">04</p>
-                    <p class="name">杠杆交易</p>
-                </div>
-                <p class="introduce">现货杠杆交易系统，竞价交易机制，与现货交易共享盘口深度，为用户提供中短期借贷资金周转支持，完善的风险防范机制，保证平台零亏损。</p>
-            </div>
-
-            <div class="col-12 col-sm-6 product-function product-function-odd">
-                <div class="title">
-                    <p class="num-icon">05</p>
-                    <p class="name">OTC</p>
-                </div>
-                <p class="introduce">数字资产交易世界的出入口，打通与其他产品的用户账户体系，方便用户用法币购买数字资产或将手中资产随时变现。严格的用户安全认证和反洗钱策略，保障运营方和用户的账户安全。</p>
-            </div>
-
-            <div class="col-12 col-sm-6 product-function product-function-even">
-                <div class="title">
-                    <p class="num-icon">06</p>
-                    <p class="name">流动性系统</p>
-                </div>
-                <p class="introduce">通过机器人程序和流动性资金支持，对上线早期盘面深度不足的品种和流动性不充分的品种，提供充足的流动性，并提高庄家作恶的成本，防止盘面不合理波动。</p>
-            </div>
+            {% for product_func in product.product_func.all %}
+                {% if product_func.position == 'Left' %}
+                    <div class="col-12 col-sm-6 product-function product-function-odd">
+                        <div class="title">
+                            <p class="num-icon"> 0{{ product_func.sequence }}</p>
+                            <p class="name">{{ product_func.name }}</p>
+                        </div>
+                        <p class="introduce">{{ product_func.excerpt }}</p>
+                    </div>
+                {% else %}
+                    <div class="col-12 col-sm-6 product-function product-function-even">
+                        <div class="title">
+                            <p class="num-icon">0{{ product_func.sequence }}</p>
+                            <p class="name">{{ product_func.name }}</p>
+                        </div>
+                        <p class="introduce">{{ product_func.excerpt }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -86,27 +58,15 @@
     </div>
     <div class="container" style="margin-top: 40px;">
         <div class="row">
+            {% for product_adv in product.product_adv.all %}
             <div class="col-4">
                 <div class="advantage-item">
-                    <p class="title">01</p>
-                    <p class="name">专业定制开发</p>
-                    <p class="introduce">开发周期短，一周之内定制一款属于您自己的交易所</p>
+                    <p class="title">0{{ product_adv.sequence }}</p>
+                    <p class="name">{{ product_adv.name }}</p>
+                    <p class="introduce">{{ product_adv.excerpt }}</p>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="advantage-item">
-                    <p class="title">02</p>
-                    <p class="name">长期维护</p>
-                    <p class="introduce">对只做运营的团队，我们提供永久的技术支持与技术服务</p>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="advantage-item">
-                    <p class="title">03</p>
-                    <p class="name">源码出售</p>
-                    <p class="introduce">本项目可以之间出售项目源码，给项目方提供自己定制的可能性</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -118,32 +78,21 @@
     </div>
     <div class="container">
         <div class="row">
+             {% for product_doc in product.product_doc.all %}
             <div class="col-12 col-lg-6 help-box-item">
                 <div class="left-img">
-                    <img src="./images/book_icon.png" alt="">
+                    <img src="{% url 'index' %}media/{{ product_doc.img }}" alt="">
                 </div>
                 <div class="right-content">
-                    <p class="title">行情 API 文档</p>
-                    <p class="desc">联系公司技术部门索要，微信电话：13611267041</p>
+                    <p class="title">{{ product_doc.name }}</p>
+                    <p class="desc">{{ product_doc.excerpt }}</p>
                     <div>
-                        <a href="#" target="_blank" class="pre-watch"><img src="./images/eye_icon.png" alt="">预览</a>
-                        <a href="#" target="_blank" class="down-btn"><img src="./images/download_icon.png" alt="">下载</a>
+                        <a href="#" target="_blank" class="pre-watch"><img src="{% static 'images/eye_icon.png' %}" alt="">预览</a>
+                        <a href="#" target="_blank" class="down-btn"><img src="{% static 'images/download_icon.png' %}" alt="">下载</a>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 help-box-item">
-                <div class="left-img">
-                    <img src="./images/book_icon.png" alt="">
-                </div>
-                <div class="right-content">
-                    <p class="title">行情 API 文档</p>
-                    <p class="desc">联系公司技术部门索要，微信电话：13611267041</p>
-                    <div>
-                        <a href="#" target="_blank" class="pre-watch"><img src="./images/eye_icon.png" alt="">预览</a>
-                        <a href="#" target="_blank" class="down-btn"><img src="./images/download_icon.png" alt="">下载</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -155,10 +104,12 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-3 col-xl-2 scene-item">
-                <p class="title">Ginger</p>
-                <p class="name">正在崛起的交易所</p>
+            {% for product_cos in product.product_cos.all   %}
+            <div class="col-6 col-sm-4 col-md-4 col-xl-3 scene-item">
+                <p class="title">{{ product_cos.name }}</p>
+                <p class="name">{{ product_cos.excerpt }}</p>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

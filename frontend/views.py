@@ -8,15 +8,14 @@ from functools import wraps
 from decimal import Decimal
 from django.core.cache import cache
 from django.core import serializers
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpRequest, JsonResponse, Http404
 from django.conf import settings
 from django.views.decorators.http import require_GET, require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
-from common.helpers import ok_json, dec, error_json, parse_int, decstr, d1, d0
+from common.helpers import paged_items, ok_json, dec, error_json, parse_int, decstr, d1, d0
 from common import exceptions
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from gingernet.helper import check_api_token
@@ -61,5 +60,24 @@ def product(request, id):
 
 def solution(request, id):
     category = Category.objects.get(id=id)
-    product = Solution.objects.get(category=category)
+    solution = Solution.objects.get(category=category)
     return render(request, 'front/solution.html', locals())
+
+
+def research(request):
+    research_lst = Research.objects.filter(is_del='No')
+    return render(request, 'front/research.html', locals())
+
+
+def comp_dyn(request):
+    comp_dyn_list = News.objects.filter(is_del='No')
+    comp_dyn_lists = paged_items(request, comp_dyn_list)
+    return render(request, 'front/newsList.html', locals())
+
+
+def partner(request):
+    return render(request, 'front/partner.html', locals())
+
+
+def about(request):
+    return render(request, 'front/about.html', locals())
