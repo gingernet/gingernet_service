@@ -1,7 +1,8 @@
 from django.conf.urls import url
 from django.urls import path, include
 from frontend.views import (
-    index, product, solution, research, comp_dyn, partner, about
+    index, product, solution, research, comp_dyn, partner,
+    about, comp_dyn_detail
 )
 
 urlpatterns = [
@@ -12,4 +13,5 @@ urlpatterns = [
     path(r'about', about, name='about'),
     path(r'product-<int:id>.html', product, name='product'),
     path(r'solution-<int:id>.html', solution, name='solution'),
+    path(r'comp_dyn_detail-<int:id>.html', comp_dyn_detail, name='comp_dyn_detail'),
 ]

@@ -19,7 +19,7 @@
                             <p class="title">{{ comp_dyn.title }}</p>
                             <p class="creatTime"><img src="{% static 'images/time_icon.png' %}" alt="">{{ comp_dyn.created_at | hdatetime }}</p>
                             <p class="article-introduce">{{ comp_dyn.excerpt }}</p>
-                            <a href="" class="seeDetail">查看详情>></a>
+                            <a href="{% url 'index' %}comp_dyn_detail-{{ comp_dyn.id }}.html" class="seeDetail">查看详情>></a>
                         </div>
                         <div class="col-4 right-img"><img src="{% url 'index' %}media/{{ comp_dyn.img }}" alt="{{ comp_dyn.title }}"></div>
                     </li>

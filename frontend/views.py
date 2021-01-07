@@ -72,7 +72,13 @@ def research(request):
 def comp_dyn(request):
     comp_dyn_list = News.objects.filter(is_del='No')
     comp_dyn_lists = paged_items(request, comp_dyn_list)
-    return render(request, 'front/newsList.html', locals())
+    return render(request, 'front/news_list.html', locals())
+
+
+def comp_dyn_detail(request, id):
+    dyn_detail = News.objects.get(id=id)
+    comp_dyn_list = News.objects.filter(is_del='No')[:10]
+    return render(request, 'front/news_detail.html', locals())
 
 
 def partner(request):

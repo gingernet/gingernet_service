@@ -264,7 +264,7 @@ class ProductDocs(BaseModel):
 
 
 class Partner (BaseModel):
-    TYPE_CHOICES = [(x, x) for x in ['Company', 'Media']]
+    TYPE_CHOICES = [(x, x) for x in ['Company', 'Media', 'Costomer']]
     name = models.CharField(max_length=70, default="", verbose_name=u'名称')
     logo = models.ImageField(upload_to='cos_logo/%Y/%m/%d/', blank=True, null=True, verbose_name=u'Logo')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
