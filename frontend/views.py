@@ -48,7 +48,7 @@ def index(request):
     company_adv_list = CompanyAdvantage.objects.filter(is_del='NO')
     solution_list = Solution.objects.filter(is_del='NO').order_by('-id')[0:3]
     news_list = News.objects.filter(is_del='NO').order_by('-id')[0:4]
-    costomer_list = Costomer.objects.filter(is_del='NO').order_by('-id')
+    partner_list = Partner.objects.filter(is_del='NO').order_by('-id')
     return render(request, 'front/index.html', locals())
 
 
