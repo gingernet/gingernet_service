@@ -20,14 +20,14 @@
     <div class="row">
       <div class="col-12 more-link solution-nav-more">
         {% for item in sl_list %}
-            <a id="solution" href="{% url 'index' %}solution-{{ item.id }}.html" target="blank">{{ item.name }}</a>
+            <a id="solution" href="{% url 'index' %}solution-{{ item.category.id }}.html" target="blank">{{ item.name }}</a>
         {% endfor %}
       </div>
     </div>
     <div class="row">
       <div class="col-12 more-link project-nav-more">
           {% for item in cp_list %}
-             <a id="product" href="{% url 'index' %}product-{{ item.id }}.html" target="blank">{{ item.name }}</a>
+             <a id="product" href="{% url 'index' %}product-{{ item.category.id }}.html" target="blank">{{ item.name }}</a>
           {% endfor %}
       </div>
     </div>
