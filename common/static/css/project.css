@@ -1,57 +1,125 @@
-.page-nav{background: #6AB3DC;padding: 10px 0;margin-top: -15px;}
-.page-nav .page-nav-item{text-align: center;color: #fff;cursor: pointer;color: #fff;text-decoration: none;display: block;border-right: 1px solid rgba(255, 255, 255, 0.2);}
-/* 产品优势 */
-.advantage-item{box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);}
-.advantage-item .title{height: 64px;font-size: 24px;font-family: Microsoft YaHei;font-weight: bold;color: #FFFFFF;background-color: rgba(106, 179, 220, 1);display: flex;justify-content: center;align-items: center;}
-.advantage-item .name{height: 64px;font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #000000;border-bottom: 1px solid #EDEDED;display: flex;justify-content: center;align-items: center;}
-.advantage-item .introduce{height: 123px;font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #555555;display: flex;justify-content: center;align-items: center;padding: 0 25px;text-align: center;}
-
-.product-function{border-bottom: 1px solid #ccc;padding-bottom: 20px;}
-.product-function .title{position: relative;}
-.product-function .title .num-icon{display:block;font-size: 90px;font-family: Microsoft YaHei;font-weight: 400;color: #F0F5FF;}
-.product-function .title .name{position: absolute;bottom: 27px;left: 5px;font-size: 18px;font-family: Microsoft YaHei;font-weight: 400;color: #232C30;}
-.product-function .introduce{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #767E8F;margin-top: -20px;}
-
-.help-box-item{display: flex;margin-top: 40px;}
-.help-box-item .left-img{width: 86px;margin-right: 15px;}
-.help-box-item .left-img img{display:block;width: 86px;}
-.help-box-item .right-content .title{font-size: 24px;font-family: Microsoft YaHei;font-weight: bold;color: #000000;}
-.help-box-item .right-content .desc{font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #555555;}
-.help-box-item .pre-watch,.help-box-item .down-btn{margin-right: 10px;font-size: 14px;font-family: Microsoft YaHei;font-weight: 400;color: #333333;line-height: 20px;}
-.help-box-item .pre-watch img{display:inline-block;width: 14px;height: 9px;margin-right: 4px;}
-.help-box-item .down-btn img{display:inline-block;width: 14px;height: 14px;margin-right: 2px;}
-
-.scene-item{box-shadow: 0px 0px 25px 5px rgba(237, 237, 237, 0.5);display: flex;flex-direction:column;justify-content : center;align-items: center;padding: 30px 15px;}
-.scene-item .title{font-size: 20px;font-family: Microsoft YaHei;font-weight: bold;color: #555555;}
-
-
-
-@media (min-width: 576px) { 
-    .product-function.product-function-odd{border-right: 1px solid #ccc;}
+/* 头图 banner */
+.banner{width: 100%;margin-top: -86px;height: 878px;background: url('../images/project/banner.png') center center no-repeat;}
+.banner .banner-content-container{padding-top: 100px;}
+.banner .banner-content-container .left-content .title{font-size: 33px;font-family: PingFang SC;font-weight: 400;color: #FFFFFF;margin-top: 54px;margin-bottom: 30px;}
+.banner .banner-content-container .left-content .desc{font-size: 14px;font-family: PingFang SC;font-weight: 400;color: #F8EAFF;line-height: 24px;;margin-bottom: 40px;}
+.banner .banner-content-container .right-image{display: flex;align-items: center;}
+.banner .banner-content-container .right-image img{display: block;width: 100%;}
+/* 页面锚点导航 page-nav-container */
+.page-nav-container{width: 100%;height: 150px;background-color: #12131C;}
+.page-nav-container .page-nav-item p{width: 100%;border-right: 1px solid #fff;font-size: 24px;font-family: PingFang SC;font-weight: 400;text-align: center;color: #fff;margin: 0;cursor: pointer;}
+.page-nav-container .page-nav-item:last-child p{border: none;}
+/* <!-- 产品功能 project-func --> */
+.project-func{width: 100%;padding: 122px 0 60px;}
+.project-func .func-item{margin-top: 100px;}
+.project-func .func-item img{display: block;width: 48px;margin-bottom: 10px;}
+.project-func .func-item .func-item-title{
+    font-size: 30px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
+.project-func .func-item .func-item-desc{
+    font-size: 16px;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #999999;
+    margin-bottom: 0;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+}
+/* 产品优势 project-advantage */
+.project-advantage{width: 100%;padding: 60px 0;}
+.project-advantage .project-advantage-item{height: 379px;border: 1px solid #EAF0FF;box-shadow: 0px 2px 8px 0px rgba(76, 92, 221, 0.1);border-radius: 10px;margin-top: 100px;padding: 0 41px 50px;box-sizing: border-box;}
+.project-advantage .project-advantage-item .blue-line{width: 42px;height: 4px;background: #002AFF;position: absolute;}
+.project-advantage .project-advantage-item img{display: block;width: 80px;margin-top: 40px;}
+.project-advantage .project-advantage-item .project-advantage-title{font-size: 21px;font-family: PingFang SC;font-weight: bold;color: #101010;margin-bottom: 0;line-height: 60px;}
+.project-advantage .project-advantage-item .project-advantage-desc{font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;text-align: justify;margin-bottom: 0;}
 
+/* 帮助文档 "help-document" */
+.help-document{width: 100%;padding: 60px 0;}
+.help-document .help-document-item{height: 333px;background: #FFFFFF;border: 1px solid #EAF0FF;box-shadow: 0px 2px 8px 0px rgba(76, 92, 221, 0.1);margin-top: 80px;box-sizing: border-box;padding: 36px 30px 50px;}
+.help-document .help-document-item .help-document-title{font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #3F3F3F;line-height: 34px;margin-bottom: 10px;}
+.help-document .help-document-item .help-document-desc{font-size: 12px;font-family: Adobe Heiti Std;font-weight: normal;color: #3F3F3F;line-height: 32px;text-align: justify;margin-bottom: 40px;}
+.help-document .help-document-item .blue-line{width: 47px;height: 4px;background: #002AFF;margin-bottom: 50px;}
+.help-document .help-document-item .download-btn{width: 144px;height: 38px;background: #FFFFFF;border: 1px solid #002AFF;border-radius: 19px;font-size: 20px;font-family: Adobe Heiti Std; font-weight: normal;color: #002AFF; line-height: 38px;text-align: center;text-decoration: none;}
+
+/* 应用场景 use-scene */
+.use-scene{width: 100%;padding: 60px 0;}
+.use-scene .use-scene-item{height:157px;display: flex;justify-content: center;align-items: center;flex-direction:column;box-shadow: 0px 0px 10px 0px rgba(10, 2, 4, 0.11);width: 100%;margin-top: 80px;}
+.use-scene .use-scene-item .use-scene-title{margin: 0;
+    font-size: 28px;
+    font-family: Adobe Heiti Std;
+    font-weight: normal;
+    color: #333333;
+    line-height: 42px;}
+.use-scene .use-scene-item .use-scene-desc{margin: 0;
+    font-size: 18px;
+    font-family: Adobe Heiti Std;
+    font-weight: normal;
+    color: #999999;
+    line-height: 30px;}
+
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+@media (min-width: 576px){
+}
+/* 小屏幕（平板，大于等于 768px screen-sm-min ） */
 @media (min-width: 768px) { 
-    .page-nav{padding: 15px 0;margin-top: -20px;}
-    .product-function.product-function-odd{border-right: 1px solid #ccc;}
+    .solution-container .solution-content .right-content .solution-title{margin-top: 0;}
+    .help-document .help-document-item .help-document-title{font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #3F3F3F;line-height: 34px;margin-bottom: 10px;}
+    .help-document .help-document-item .help-document-desc{font-size: 12px;font-family: Adobe Heiti Std;font-weight: normal;color: #3F3F3F;line-height: 16px;text-align: justify;margin-bottom: 30px;}
+    .help-document .help-document-item .download-btn{width: 114px;height: 30px;background: #FFFFFF;border: 1px solid #002AFF;border-radius: 19px;font-size: 14px;font-family: Adobe Heiti Std; font-weight: normal;color: #002AFF; line-height: 30px;text-align: center;text-decoration: none;}
+    .help-document .help-document-item .blue-line{width: 47px;height: 4px;background: #002AFF;margin-bottom: 30px;}
 }
 
 /* 中等屏幕（桌面显示器，大于等于 992px screen-md-min ） */
 @media (min-width: 992px) { 
-    .page-nav{padding: 22px 0;margin-top: -30px;}
-    .product-function.product-function-even{padding-left: 60px;}
-    .product-function.product-function-odd{border-right: 1px solid #ccc;}
-    .help-box-item:first-child{border-right: 1px solid #ccc;}
+    .owner-forte .owner-forte-content .owner-forte-block{display: block;}
+    .solution-container .solution-content .right-content .solution-title{margin-top: 0;}
+    .cooperative-partner .cooperative-content .cooperative-white-block{display: block;}
+    .banner .banner-content-container .left-content .title{font-size: 54px;}
+    .project-advantage .project-advantage-item .project-advantage-title{font-size: 24px;font-family: PingFang SC;font-weight: bold;color: #101010;margin-bottom: 0;line-height: 82px;}
+    .project-advantage .project-advantage-item .project-advantage-desc{font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 25px;text-align: justify;margin-bottom: 0;}
+    .help-document .help-document-item .help-document-title{font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #3F3F3F;line-height: 34px;margin-bottom: 10px;}
+    .help-document .help-document-item .help-document-desc{font-size: 12px;font-family: Adobe Heiti Std;font-weight: normal;color: #3F3F3F;line-height: 32px;text-align: justify;margin-bottom: 40px;}
+    .banner .banner-content-container{padding-top: 240px;}
 }
 
 /* 大屏幕（大桌面显示器，大于等于 1200px screen-lg-min ） */
 @media (min-width: 1200px) { 
-    /* 公共模块 module-box */
-    .page-nav{padding: 37px 0;margin-top: -48px;}
-    .product-function.product-function-even{padding-left: 90px;}
-    .product-function.product-function-odd{border-right: 1px solid #ccc;}
-    .help-box-item:nth-child(2n+1){border-right: 1px solid #ccc;}
-    .help-box-item:nth-child(2n+2){padding-left: 90px;}
+    .owner-forte .owner-forte-content .owner-forte-block{display: block;}
+    .solution-container .solution-content .right-content .solution-title{margin-top: 0; font-size: 33px;font-family: PingFang SC;font-weight: bold;color: #333333;line-height: 33px;margin-bottom: 0;}
+    .solution-container .solution-content .right-content .solution-desc{margin-top: 24px;font-size: 20px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 33px;}
+    .solution-container .solution-content .right-content .more-btn{width: 150px;height: 50px;background: #002AFF;border-radius: 25px;margin-bottom: 20px;display: flex;justify-content: center;align-items: center;text-decoration: none;font-size: 20px;font-family: PingFang SC;font-weight: 400;color: #FFFFFF;line-height: 24px;}
+    .cooperative-partner .cooperative-content .cooperative-white-block{display: block;}
+    .banner .banner-content-container .left-content .title{font-size: 54px;}
+    .banner .banner-content-container{padding-top: 240px;}
+    .project-advantage .project-advantage-item .project-advantage-title{font-size: 24px;font-family: PingFang SC;font-weight: bold;color: #101010;margin-bottom: 0;line-height: 82px;}
+    .project-advantage .project-advantage-item .project-advantage-desc{font-size: 16px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 25px;text-align: justify;margin-bottom: 0;}
+    .help-document .help-document-item .help-document-title{font-size: 27px;font-family: PingFang SC;font-weight: 400;color: #3F3F3F;line-height: 34px;margin-bottom: 10px;}
+    .help-document .help-document-item .help-document-desc{font-size: 15px;font-family: Adobe Heiti Std;font-weight: normal;color: #3F3F3F;line-height: 32px;text-align: justify;margin-bottom: 40px;}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

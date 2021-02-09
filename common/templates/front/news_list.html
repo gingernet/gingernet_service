@@ -1,37 +1,54 @@
 {% extends 'front/layout/main.html' %}
 {% load staticfiles ginger_tags %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/newList.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/news.css' %}" />
 {% endblock %}
 {% block body %}
 {% include 'front/layout/nav.html' %}
-<div class="module-tab-banner">
-    <img src="{% static 'images/news_list_banner.png' %}" alt="research_banner">
-</div>
- <div class="news-content-box container">
-    <div class="row">
-        <div class="bd">
-            <div class="bd-item">
-                <ul class="news-list">
-                    {% for comp_dyn in comp_dyn_lists %}
-                    <li>
-                        <div class="news-list-item col-8">
-                            <p class="title">{{ comp_dyn.title }}</p>
-                            <p class="creatTime"><img src="{% static 'images/time_icon.png' %}" alt="">{{ comp_dyn.created_at | hdatetime }}</p>
-                            <p class="article-introduce">{{ comp_dyn.excerpt }}</p>
-                            <a href="{% url 'index' %}comp_dyn_detail-{{ comp_dyn.id }}.html" class="seeDetail">查看详情>></a>
+ <div class="banner">
+    <div class="banner-content-container">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="left-content col-12 col-lg-6">
+            <p class="title">新闻中心</p>
+            <p class="title">NEWS CENTER</p>
+          </div>
+          <div class="right-image col-10 col-sm-8 col-lg-5">
+            <img src="{% static 'images/news/news_pic.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  research-list-container -->
+  <div class="research-list-container">
+    <div class="container">
+        <div class="row">
+          {% for comp_dyn in comp_dyn_lists %}
+            <div class="research-item-box col-12">
+                <div class="row">
+                    <div class="col-4 col-lg-3 research-item-left d-flex align-items-center">
+                        <img src="{% url 'index' %}media/{{ comp_dyn.img }}" alt="">
+                    </div>
+                    <div class="col-8 col-lg-9 research-item-right">
+                        <p class="research-title">{{ comp_dyn.title }}</p>
+                        <p class="research-desc">{{ comp_dyn.excerpt }}</p>
+                        <div class="bottom-info">
+                            <p class="time">{{ comp_dyn.created_at | hdatetime }}</p>
                         </div>
-                        <div class="col-4 right-img"><img src="{% url 'index' %}media/{{ comp_dyn.img }}" alt="{{ comp_dyn.title }}"></div>
-                    </li>
-                    {% endfor %}
-                </ul>
-                <div class="page-box">
-                    {% include 'front/layout/page.html' with items=comp_dyn_lists %}
+                    </div>
                 </div>
             </div>
+          {% endfor %}
         </div>
     </div>
-</div>
+  </div>
+  <!-- 分页 page-container -->
+  <div class="page-container container">
+      <div class="row">
+           {% include 'front/layout/page.html' with items=comp_dyn_lists %}
+      </div>
+  </div>
 {% include 'front/layout/bottom.html' %}
 {% include 'front/layout/right.html' %}
 {% endblock %}

@@ -188,6 +188,7 @@ class News(BaseModel):
 class ProductFunc(BaseModel):
     name = models.CharField(max_length=70, default="", verbose_name=u'产品名称')
     sequence = models.PositiveIntegerField(default=0, verbose_name=u'序号')
+    icon = models.ImageField(upload_to='product/%Y/%m/%d/', blank=True, null=True, verbose_name=u'产品Icon')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
     position = models.CharField(max_length=16, choices=POS_CHOICES, default='NO', verbose_name=u'是否删除')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='Left', verbose_name=u'是否删除')
@@ -212,6 +213,7 @@ class ProductFunc(BaseModel):
 
 class ProductAdvantage(BaseModel):
     name = models.CharField(max_length=70, default="", verbose_name=u'名称')
+    icon = models.ImageField(upload_to='product/%Y/%m/%d/', blank=True, null=True, verbose_name=u'优势Icon')
     sequence = models.PositiveIntegerField(default=0, verbose_name=u'序号')
     excerpt = models.TextField(max_length=200, blank=True, default="", verbose_name=u'摘要')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')

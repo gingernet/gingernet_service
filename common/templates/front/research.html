@@ -5,32 +5,50 @@
 {% endblock %}
 {% block body %}
 {% include 'front/layout/nav.html' %}
-     <div class="module-tab-banner">
-        <img src="{% static 'images/research_banner.png' %}" alt="research_banner">
+ <!-- 头图 banner -->
+  <div class="banner">
+    <div class="banner-content-container">
+      <div class="container">
+        <div class="row">
+          <div class="left-content col-5">
+            <p class="title">研究中心</p>
+            <p class="desc">专注于区块链行业底层技术分析，包括区块链应用，基础协议层，生态服务类于区块链技术</p>
+          </div>
+          <div class="col-1"></div>
+          <div class="right-image col-5">
+            <img src="{% static 'images/research/banner_yanjiuzhongxin.png' %}" alt="">
+          </div>
+        </div>
+      </div>
     </div>
-     <div class="download-container container">
+  </div>
+  <!-- 研究报告 research-list-container -->
+  <div class="research-list-container">
+    <div class="container">
         <div class="row">
             {% for research in research_lst %}
-                <div class="download-item col-12 row">
-                    <div class="left-img col-3">
-                        <img src="{% url 'index' %}media/{{ research.img }}" alt="download_list_1">
+                <div class="research-item-box col-12">
+                <div class="row">
+                    <div class="col-4 col-lg-3 research-item-left d-flex align-items-center">
+                        <img src="{% url 'index' %}media/{{ research.img }}" alt="">
                     </div>
-                    <div class="right-content col-9">
-                        <p class="title">{{ research.name }}</p>
-                        <p class="introduce">{{ research.excerpt }}</p>
-                        <div class="detail">
-                            <p class="date">{{ research.created_at | hdatetime }}</p>
-                            <div class="btn-box">
-                                <p><a href="#" target="_blank"><img src="{% static 'images/eye_icon.png' %}" alt="">预览</a></p>
-                                <p><a href="#" target="_blank"><img src="{% static 'images/download_icon.png' %}" alt="">下载</a></p>
+                    <div class="col-8 col-lg-9 research-item-right">
+                        <p class="research-title">{{ research.name }}</p>
+                        <p class="research-desc">{{ research.excerpt }}</p>
+                        <div class="bottom-info">
+                            <p class="time">{{ research.created_at | hdatetime }}</p>
+                            <div class="btn-list">
+                                <a href="#" target="_blank">预览</a>
+                                <a href="#" target="_blank">下载</a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </div>
-{% include 'front/layout/ask.html' %}
+  </div>
 {% include 'front/layout/bottom.html' %}
 {% include 'front/layout/right.html' %}
 {% endblock %}

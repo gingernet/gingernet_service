@@ -10,9 +10,8 @@
     <meta name="description" content="木姜子科技官网" />
     <meta name="keywords" content="木姜子科技官网" />
     <link rel="icon" type="image/png" sizes="16x16" href="#" />
-    <link rel="stylesheet" href="{% static 'css/normal.css'%} ">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
-    <link rel="stylesheet" href="{% static 'css/cube-portfolio.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
      <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/common.css'%}">
@@ -22,53 +21,60 @@
   <body>
      {% block body %}
      {% endblock %}
-
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="{% static 'js/jquery.SuperSlide.2.1.1.js'%}"></script>
-    <script src="{% static 'js/cube-portfolio.min.js'%}"></script>
     <script src="{% static 'js/owl.carousel.js'%}"></script>
-    <script>
-        $('.nav-project').mouseenter(function(){
-            $(this).find('.down-icon').css('opacity','0')
-            $(this).find('.project-option-list').slideDown()
-            $(this).find('.project-option-list').css('display','flex')
-        })
-        $('.nav-project').mouseleave(function(){
-            $(this).find('.down-icon').css('opacity','1')
-            $(this).find('.project-option-list').hide()
-        })
-        $('.plan-project').mouseenter(function(){
-            $(this).find('.down-icon').css('opacity','0')
-            $(this).find('.project-option-list').slideDown()
-            $(this).find('.project-option-list').css('display','flex')
+     <script>
+    var timer = null;
+    var timer2 = null;
+    $('.project-nav').mouseenter(function(){
+      $('.solution-nav-more').hide()
+      $('.project-nav-more').css('display','flex')
+    })
+    $('.project-nav-more').mouseenter(function(){
+      clearTimeout(timer)
+    })
+    $('.project-nav-more').mouseleave(function(){
+      $('.project-nav-more').hide()
+    })
 
-        })
-        $('.plan-project').mouseleave(function(){
-            $(this).find('.down-icon').css('opacity','1')
-            $(this).find('.project-option-list').hide()
-        })
-        $('.child-list-item-1').click(function(){
-            $('.nav-item-list-1').slideToggle()
-            $(this).find('.list-icon img').toggle()
-        })
-        $('.child-list-item-2').click(function(){
-            $('.nav-item-list-2').slideToggle()
-            $(this).find('.list-icon img').toggle()
-        })
-        $('.mobile-nav .icon').click(function(){
-            $('.nav-list').slideToggle()
-        })
-     </script>
-     <script>
-        var goToTop = function(){
-            $("body,html").animate({
-                scrollTop: 0
-            }, 500);
-        }
-    </script>
-     <script>
+    $('.project-nav').mouseleave(function(){
+      timer = setTimeout(() => {
+        $('.project-nav-more').hide()
+      }, 500)
+    })
+    $('.solution-nav').mouseenter(function(){
+      $('.project-nav-more').hide()
+      $('.solution-nav-more').css('display','flex')
+    })
+    $('.solution-nav').mouseleave(function(){
+      timer2 = setTimeout(() => {
+        $('.solution-nav-more').hide()
+      }, 500)
+    })
+    $('.solution-nav-more').mouseenter(function(){
+      clearTimeout(timer2)
+    })
+    $('.solution-nav-more').mouseleave(function(){
+      $('.solution-nav-more').hide()
+    })
+  </script>
+  <script>
+    $('.mobile-nav-container .icon').click(function(){
+      $('.nav-list').slideToggle()
+    })
+    $('.child-list-item-1').click(function(){
+        $('.nav-item-list-1').slideToggle()
+        $(this).find('.list-icon img').toggle()
+    })
+    $('.child-list-item-2').click(function(){
+        $('.nav-item-list-2').slideToggle()
+        $(this).find('.list-icon img').toggle()
+    })
+  </script>
+  <script>
         $('.right-float ul li').mouseenter(function(){
             if($(this).find('.info')){
                 $(this).find('.info').show()

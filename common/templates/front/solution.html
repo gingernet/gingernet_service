@@ -1,242 +1,161 @@
 {% extends 'front/layout/main.html' %}
 {% load staticfiles ginger_tags %}
 {% block head %}
-  <link rel="stylesheet" href="{% static 'css/scheme.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/solution.css'%}">
 {% endblock %}
 {% block body %}
 {% include 'front/layout/nav.html' %}
-<!-- 头图 banner -->
-    <div class="module-tab-banner">
-        <img src="{% static 'images/scheme_banner.png' %}" alt="research_banner">
+    <div class="banner">
+    <div class="banner-content-container">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="left-content col-12 col-lg-4">
+            <p class="title">解决方案</p>
+            <p class="desc">--交易所解决方案</p>
+          </div>
+          <div class="col-1"></div>
+          <div class="right-image col-7">
+            <img src="{% static 'images/solution/scheme_pic.png' %}" alt="">
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- 页面导航 -->
-    <div style="width: 100%;background-color: #f9f9f9;">
+  </div>
+  <div class="page-nav-container d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-3 page-nav-item align-items-center" onclick="goPageModule(1)">
+                <p>方案架构</p>
+            </div>
+            <div class="col-3 page-nav-item align-items-center" onclick="goPageModule(2)">
+                <p>产品组合</p>
+            </div>
+            <div class="col-3 page-nav-item align-items-center" onclick="goPageModule(3)">
+                <p>方案优势</p>
+            </div>
+            <div class="col-3 page-nav-item align-items-center" onclick="goPageModule(4)">
+                <p>风控体系</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="scheme-box page-nav-item-1-end">
+        <div class="module-title">
+            <p class="title">方案架构及详情</p>
+        </div>
+        <div class="container" style="margin-top: 40px;">
+            <div class="row no-gutters">
+                <div class="col-lg-7 col-12">
+                    <img src="{% static 'images/solution/scheme_detail_left.png' %}" alt="" style="display: block;width: 100%;">
+                </div>
+                <div class="scheme-detail-content col-lg-5 col-12">
+                    <img src="{% static 'images/solution/scheme_detail_icon.png' %}" alt="">
+                    <div class="scheme-introduce">
+                        <p class="title">方案详情</p>
+                        <p>功能成熟、应用广泛的数字资产现货交易系统，强大的内存撮合引擎保证高并发交易支持，包含完善的前后台系统，提供配套中心化钱包，系统安全稳定，可保障平台和用户双方的隐私安全、系统安全和资产安全，支持策略委托；功能成熟的金融期货交易系统，支持双向开仓和逐仓管理。</p>
+                        <p>有完备的风险防范制度，并可按指数价格交割，最大限度保护用户的权益和资产安全。现货杠杆交易系统，竞价交易机制，与现货交易共享盘口深度，为用户提供中短期借贷资金周转支持，完善的风险防范机制，保证平台零亏损。</p>
+                    </div>
+                    <img src="{% static 'images/solution/scheme_detail_icon.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="project-group page-nav-item-2-end">
+        <div class="module-title">
+            <p class="title">产品组合</p>
+        </div>
+        <div class="container project-group-content">
+            <div class="row">
+                <div class="col-12">
+                    {% for product in  solution.product.all %}
+                    <div class="project-group-item">
+                        <div class="group-item-title">
+                            <p>{{ product.name }}</p>
+                            <img src="{% static 'images/solution/arrow-icon.png' %}" alt="" onclick="showIntroduce()">
+                        </div>
+                        <div class="group-item-content">
+                            <p>{{ product.excerpt }}</p>
+                        </div>
+                        <div class="group-item-introduce">
+                            <ul class="introduce-list d-flex justify-content-between">
+                                <div class="container">
+                                    <div class="row">
+                                        {% for product_func in  product.product_func.all %}
+                                        <li class="col-6 col-md-3">
+                                            <p class="introduce-item-title">{{ product_func.name }}</p>
+                                            <p class="introduce-item-desc">{{ product_func.excerpt }}</p>
+                                        </li>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scheme-advantage page-nav-item-3-end">
+        <div class="module-title">
+            <p class="title">方案优势</p>
+        </div>
         <div class="container">
             <div class="row">
-                <div class="page-nav col-12">
-                    <div class="row justify-content-between">
-                        <div class="page-nav-item page-nav-item-1 col-2">方案架构</div>
-                        <div class="page-nav-item page-nav-item-2 col-2">方案详情</div>
-                        <div class="page-nav-item page-nav-item-3 col-2">产品组合</div>
-                        <div class="page-nav-item page-nav-item-4 col-2">方案优势</div>
-                        <div class="page-nav-item page-nav-item-5 col-2">风控体系</div>
+                 {% for solution_adv in solution.solution_adv.all %}
+                <div class="col-12 col-md-6">
+                    <div class="scheme-advantage-item">
+                        <p class="number-icon">0{{ solution_adv.sequence }}</p>
+                        <p class="scheme-advantage-title">{{ solution_adv.title }}</p>
+                        <p class="scheme-advantage-desc">{{ solution_adv.excerpt }}</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        $('.page-nav-item-1').click(function(){
-            var scroll_offset = $(".page-nav-item-1-end").offset().top;
-            $("body,html").animate({
-                scrollTop: scroll_offset
-            }, 500);
-        })
-        $('.page-nav-item-2').click(function(){
-            var scroll_offset = $(".page-nav-item-1-end").offset().top;
-            $("body,html").animate({
-                scrollTop: scroll_offset
-            }, 500);
-        })
-        $('.page-nav-item-3').click(function(){
-            var scroll_offset = $(".page-nav-item-3-end").offset().top;
-            $("body,html").animate({
-                scrollTop: scroll_offset
-            }, 500);
-        })
-        $('.page-nav-item-4').click(function(){
-            var scroll_offset = $(".page-nav-item-4-end").offset().top;
-            $("body,html").animate({
-                scrollTop: scroll_offset
-            }, 500);
-        })
-        $('.page-nav-item-5').click(function(){
-            var scroll_offset = $(".page-nav-item-5-end").offset().top;
-            $("body,html").animate({
-                scrollTop: scroll_offset
-            }, 500);
-        })
-    </script>
-    <!-- 方案架构及详情 -->
-    <div class="module-box gray-module-box page-nav-item-1-end">
-        <div class="module-title">
-            <p>方案架构及详情</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-        </div>
-        <div class="container" style="margin-top: 40px;">
-            <div class="row">
-                <img src="{% url 'index' %}media/{{ solution.img }}" alt="" style="display: block;width: 100%;">
-            </div>
-        </div>
-    </div>
-    <script>
-        var closeItem = function(){
-            var item = $(event.srcElement).parents('.produce-group-item');
-            item.find('.item-content').slideUp('slow',function(){
-                item.find('.item-title').removeClass('show-list')
-            })
-        }
-        var openItem = function(){
-            var item = $(event.srcElement).parents('.produce-group-item');
-            $('.produce-group-item .item-title').removeClass('show-list')
-            $('.produce-group-item .item-content').slideUp('slow')
-            item.find('.item-content').slideDown('slow',function(){
-                item.find('.item-title').addClass('show-list')
-            })
-        }
-    </script>
-
-    <!-- 产品组合 -->
-    <div class="module-box page-nav-item-3-end">
-        <div class="module-title">
-            <p>产品组合</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-        </div>
-        <div class="produce-group container">
-            <div class="row">
-                {% for product in  solution.product.all %}
-                    <div class="produce-group-item">
-                        <div class="item-title show-list">
-                            <div class="item-name-box">
-                                <p class="item-name">{{ product.name }}</p>
-                            </div>
-                            <div class="item-icon-box">
-                                <div onclick='closeItem()'>
-                                    <img src="{% static 'images/jian_icon.png' %}" alt="" class="jian-icon" >
-                                </div>
-                                <div onclick="openItem()">
-                                    <img src="{% static 'images/jia_icon.png' %}" alt="" class="jia-icon">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-introduce">{{ product.excerpt }}</div>
-                        <div class="item-content">
-                            <div class="row">
-                                {% for product_func in  product.product_func.all %}
-                                <div class="col-12 col-md-6 item-content-item">
-                                    <p class="title">{{ product_func.name }}</p>
-                                    <p class="desc">{{ product_func.excerpt }}</p>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
                 {% endfor %}
-            </div>
-        </div>
-    </div>
 
-    <!-- 方案优势 -->
-    <div class="module-box gray-module-box page-nav-item-4-end">
-        <div class="module-title">
-            <p>方案优势</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-        </div>
-        <div class="container" style="margin-top: 50px;">
-            <div class="row">
-                {% for solution_adv in solution.solution_adv.all %}
-                    {% if  solution_adv.position == 'left'%}
-                        <div class="col-12 col-sm-6 product-function product-function-odd">
-                            <div class="title">
-                                <p class="num-icon">0{{ solution_adv.sequence }}</p>
-                                <p class="name">{{ solution_adv.title }}</p>
-                            </div>
-                            <p class="introduce">{{ solution_adv.excerpt }}</p>
-                        </div>
-                    {% else %}
-                        <div class="col-12 col-sm-6 product-function product-function-even">
-                            <div class="title">
-                                <p class="num-icon">0{{ solution_adv.sequence }}</p>
-                                <p class="name">{{ solution_adv.title }}</p>
-                            </div>
-                            <p class="introduce">{{ solution_adv.excerpt }}</p>
-                        </div>
-                    {% endif %}
-                {% endfor %}
             </div>
         </div>
     </div>
-    <!-- 风控体系 -->
-    <div class="module-box page-nav-item-5-end">
+    <div class="risk-management page-nav-item-4-end">
         <div class="module-title">
-            <p>风控体系</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+            <p class="title">风控体系</p>
         </div>
-        <div class="container" style="margin-top: 40px;">
+        <div class="container">
             <div class="row">
                 {% for solution_wc in solution.solution_wc.all %}
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="advantage-item">
-                        <p class="title">{{ solution_wc.sequence }}</p>
-                        <p class="name">{{ solution_wc.title }}</p>
-                        <p class="introduce">{{ solution_wc.excerpt }}</p>
+                <div class="col-12 col-md-4">
+                    <div class="project-advantage-item d-flex flex-column align-items-center">
+                        <p class="blue-line"></p>
+                        <p class="zero-icon">0{{ solution_wc.sequence }}</p>
+                        <p class="project-advantage-title">{{ solution_wc.title }}</p>
+                        <p class="project-advantage-desc">{{ solution_wc.excerpt }}</p>
                     </div>
                 </div>
-                {% endfor %}
+               {% endfor %}
             </div>
         </div>
     </div>
-{% include 'front/layout/ask.html' %}
 {% include 'front/layout/bottom.html' %}
 {% include 'front/layout/right.html' %}
 {% endblock %}
 {% block script %}
-    <script>
-    $('.page-nav-item-1').click(function(){
-        var scroll_offset = $(".page-nav-item-1-end").offset().top;
-        $("body,html").animate({
-            scrollTop: scroll_offset
-        }, 500);
-    })
-    $('.page-nav-item-2').click(function(){
-        var scroll_offset = $(".page-nav-item-2-end").offset().top;
-        $("body,html").animate({
-            scrollTop: scroll_offset
-        }, 500);
-    })
-    $('.page-nav-item-3').click(function(){
-        var scroll_offset = $(".page-nav-item-3-end").offset().top;
-        $("body,html").animate({
-            scrollTop: scroll_offset
-        }, 500);
-    })
-    $('.page-nav-item-4').click(function(){
-        var scroll_offset = $(".page-nav-item-4-end").offset().top;
-        $("body,html").animate({
-            scrollTop: scroll_offset
-        }, 500);
-    })
-</script>
-     <script>
-		$('#portfolio-item').cubeportfolio({
-			filters: '#portfolio-nav',
-			loadMoreAction: 'click',
-			// defaultFilter: '*',
-			defaultFilter: '.baaspt',
-			layoutMode: 'grid',
-			animationType: 'quicksand',
-			gridAdjustment: 'responsive',
-			gapHorizontal: 30,
-			gapVertical: 30,
-			mediaQueries: [{
-				width: 1100,
-				cols: 3,
-			},{
-				width: 768,
-				cols: 3,
-			}, {
-				width: 480,
-				cols: 2,
-			},{
-				width: 0,
-				cols: 1,
-			}],
-			caption: 'overlayBottomPush',
-			displayType: 'sequentially',
-			displayTypeSpeed: 80,
-		});
-     </script>
-     <script>
-        jQuery(".banner-container").slide({mainCell:".bd",autoPlay:true});
+  <script>
+      let goPageModule = function(num){
+            var scroll_offset = $(`.page-nav-item-${num}-end`).offset().top;
+            $("body,html").animate({
+                scrollTop: scroll_offset
+            }, 500);
+      }
+  </script>
+   <script>
+        let showIntroduce = function(){
+            $(event.target).toggleClass('show-introduce')
+            $(event.target).parents(".project-group-item").find('.group-item-introduce').slideToggle();
+        }
+   </script>
+   <script>
+        let showIntroduce = function(){
+            $(event.target).toggleClass('show-introduce')
+            $(event.target).parents(".project-group-item").find('.group-item-introduce').slideToggle();
+        }
     </script>
 {% endblock %}

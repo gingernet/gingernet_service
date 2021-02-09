@@ -31,6 +31,8 @@ logger = logging.getLogger(__name__)
 def global_variable(request):
     navcat_category_list = []
     nav_cat_list = NavCat.objects.all()
+    cp_list = Product.objects.filter(product_cat='blockchain',is_del='NO').all()
+    sl_list = Solution.objects.filter(is_del='NO').all()
     link_list = Link.objects.all().order_by('-id')[:100]
     for nav_cat in nav_cat_list:
         category_list = Category.objects.filter(nav_cat=nav_cat)

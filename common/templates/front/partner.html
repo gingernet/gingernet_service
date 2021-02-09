@@ -1,106 +1,114 @@
 {% extends 'front/layout/main.html' %}
 {% load staticfiles ginger_tags %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/parnter.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/partner.css' %}" />
 {% endblock %}
 {% block body %}
 {% include 'front/layout/nav.html' %}
-<div class="module-tab-banner">
-    <img src="{% static 'images/banner_partner.png' %}" alt="research_banner">
+<!-- 头图 banner -->
+<div class="banner">
+    <div class="banner-content-container">
+      <div class="container">
+        <div class="row">
+          <div class="left-content col-12 col-lg-6">
+            <p class="title">拥抱合作，持续创新</p>
+            <p class="desc">作为国内区块链技术服务的领先者木姜子科技致力于为更多公司和团队实现目标成为一家拥抱变化，持续发展的好公司</p>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="right-image col-12 col-sm-10 col-lg-5">
+            <img src="{% static 'images/partner/hezuo_banner_pic.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 <!-- 合作企业 -->
-    <div class="module-box container company-list-box">
+<div class="module-box container company-list-box">
+    <div class="row">
+        <div class="module-title col-12">
+            <p class="title">合作企业</p>
+        </div>
+        <p class="introduce col-12">目前，天津木姜子科技有限公司(gingernet.vip)已经和20多家企业达成合作，其中，建立深度合作关系有以下 8 家企业<br />我们为这些企业提供技术、市场、生态、安全等全方位的支持，帮助客户解决运营中遇到的一切问题</p>
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_1.png' %}" alt="">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_2.png' %}" alt="">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_3.png' %}" alt="">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_4.png' %}" alt="">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_5.png' %}" alt="">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_6.png' %}" alt="">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_7.png' %}" alt="">
+            </div>
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
+                <img src="{% static 'images/partner/company_list_8.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 合作媒体 -->
+<div class="module-box gray-module-box media-list-box">
+    <div class="container">
         <div class="row">
             <div class="module-title col-12">
-                <p>合作企业</p>
-                <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+                <p class="title">合作媒体</p>
             </div>
-            <p class="introduce col-12">
-                目前，天津木姜子科技有限公司(gingernet.vip)已经和20多家企业达成合作，其中，建立深度合作关系有以下 8 家企业<br />
-                我们为这些企业提供技术、市场、生态、安全等全方位的支持，帮助客户解决运营中遇到的一切问题
-            </p>
-            <div class="row">
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_1.png' %}" alt="">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_2.png' %}" alt="">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_3.png' %}" alt="">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_4.png' %}" alt="">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_5.png' %}" alt="">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_6.png' %}" alt="">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_7.png' %}" alt="">
-                </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6 col-12 company-item">
-                    <img src="{% static '/images/company_list_8.png' %}" alt="">
-                </div>
+            <p class="introduce col-12">天津木姜子科技有限公司(Gingernet.vip)和知鱼财经，今日头条，新浪微博，金色财经，搜狐财经达成一站式媒体服务</p>
+            <div class="media-list-box row justify-content-around">
+                <div class="media-item col-2"><img src="{% static 'images/partner/media_list_1.png' %}" alt=""></div>
+                <div class="media-item col-2"><img src="{% static 'images/partner/media_list_2.png' %}" alt=""></div>
+                <div class="media-item col-2"><img src="{% static 'images/partner/media_list_3.png' %}" alt=""></div>
+                <div class="media-item col-2"><img src="{% static 'images/partner/media_list_4.png' %}" alt=""></div>
+                <div class="media-item col-2"><img src="{% static 'images/partner/media_list_5.png' %}" alt=""></div>
             </div>
         </div>
     </div>
-    <!-- 合作媒体 -->
-    <div class="module-box gray-module-box media-list-box">
-        <div class="container">
-            <div class="row">
-                <div class="module-title col-12">
-                    <p>合作媒体</p>
-                    <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-                </div>
-                <p class="introduce col-12">天津木姜子科技有限公司(Gingernet.vip)和知鱼财经，今日头条，新浪微博，金色财经，搜狐财经达成一站式媒体服务</p>
-                <div class="media-list-box row justify-content-between">
-                    <div class="media-item col-2"><img src="{% static 'images/media_list_1.png' %}" alt=""></div>
-                    <div class="media-item col-2"><img src="{% static 'images/media_list_2.png' %}" alt=""></div>
-                    <div class="media-item col-2"><img src="{% static 'images/media_list_3.png' %}" alt=""></div>
-                    <div class="media-item col-2"><img src="{% static 'images/media_list_4.png' %}" alt=""></div>
-                    <div class="media-item col-2"><img src="{% static 'images/media_list_5.png' %}" alt=""></div>
-                </div>
-            </div>
+</div>
+
+<!-- 合作客户 -->
+<div class="module-box container client-box-container">
+    <div class="row">
+        <div class="module-title col-12">
+            <p class="title">合作客户</p>
         </div>
+        <p class="introduce col-12">天津木姜子科技有限公司(Gingernet.vip)到目前为止，已经完成了 Biwork企业钱包，XQS Token量化，UmiCash 钱包，AskMe</p>
+        <p class="introduce col-12">钱包，Ginger数字货币交易所，Ginger硬件钱包，GinChain联盟链，三道知识产权保护，火星交易所，卡得商务，FBT项目，</p>
+        <p class="introduce col-12">TBSV项目，完美策略股票交易所，腾煌国际股票交易所，西南家政，家政服务超市，知鱼行，巡宇小程序，搜米域名</p>
     </div>
-    <!-- 合作客户 -->
-    <div class="module-box container client-box-container">
+    <div class="client-container container">
         <div class="row">
-            <div class="module-title col-12">
-                <p>合作客户</p>
-                <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-            </div>
-            <p class="introduce col-12">天津木姜子科技有限公司(Gingernet.vip)到目前为止，已经完成了 Biwork企业钱包，XQS Token量化，UmiCash 钱包，AskMe</p>
-            <p class="introduce col-12">钱包，Ginger数字货币交易所，Ginger硬件钱包，GinChain联盟链，三道知识产权保护，火星交易所，卡得商务，FBT项目，</p>
-            <p class="introduce col-12">TBSV项目，完美策略股票交易所，腾煌国际股票交易所，西南家政，家政服务超市，知鱼行，巡宇小程序，搜米域名</p>
-        </div>
-        <div class="client-container container">
-            <div class="row">
-                <div class="client-box col-10 owl-carousel">
-                    <div>XQS ToKen</div>
-                    <div>UmiCash</div>
-                    <div>Biwork</div>
-                    <div>FBT</div>
-                    <div>AskMe</div>
-                    <div>Ginger</div>
-                    <div>OBT</div>
-                    <div>HuoXing</div>
-                    <div>巡宇支付</div>
-                    <div>知鱼行</div>
-                    <div>三道文化</div>
-                    <div>Soumi</div>
-                    <div>西南家政</div>
-                    <div>家政服务超市</div>
-                    <div>TBS Wallet</div>
-                    <div>幸运兔 DAPP</div>
-                </div>
+            <div class="client-box col-10 owl-carousel">
+                <div>XQS ToKen</div>
+                <div>UmiCash</div>
+                <div>Biwork</div>
+                <div>FBT</div>
+                <div>AskMe</div>
+                <div>Ginger</div>
+                <div>OBT</div>
+                <div>HuoXing</div>
+                <div>巡宇支付</div>
+                <div>知鱼行</div>
+                <div>三道文化</div>
+                <div>Soumi</div>
+                <div>西南家政</div>
+                <div>家政服务超市</div>
+                <div>TBS Wallet</div>
+                <div>幸运兔 DAPP</div>
             </div>
         </div>
     </div>
-{% include 'front/layout/ask.html' %}
+</div>
 {% include 'front/layout/bottom.html' %}
 {% include 'front/layout/right.html' %}
 {% endblock %}

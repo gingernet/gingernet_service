@@ -2,209 +2,304 @@
 {% load staticfiles ginger_tags %}
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/common.css' %}" />
- <link rel="stylesheet" href="{% static 'css/index.css'%}">
+<link rel="stylesheet" href="{% static 'css/index.css'%}" />
 {% endblock %}
 {% block body %}
     {% include 'front/layout/nav.html' %}
-    <div class="banner-container">
-        <ul class="bd">
-            <li><a href="#"><img src="{% static 'images/banner_1.png' %}" alt="banner"></a></li>
-            <li><a href="#"><img src="{% static 'images/banner_2.png' %}" alt="banner"></a></li>
-            <li><a href="#"><img src="{% static 'images/banner_3.png' %}" alt="banner"></a></li>
-            <li><a href="#"><img src="{% static 'images/banner_4.png' %}" alt="banner"></a></li>
-        </ul>
-        <ul class="hd">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-    <!-- 一直不懈的努力，提供最好的服务我们，随时随地待命 -->
-    <div class="module-box">
-        <div class="module-title">
-            <p>我们的优势</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-        </div>
-        <ul class="serve-box container">
-            <div class="row justify-content-between">
-                {% for company_adv in company_adv_list %}
-                <li class="col-xl-4 col-md-6 col-12">
-                    <div class="server-item">
-                        <div class="img-box">
-                            <img src="{% url 'index' %}media/{{ company_adv.img }}" alt="serve_1">
-                        </div>
-                        <p class="serve-item-title">{{ company_adv.title }}</p>
-                        <p class="serve-item-content">{{ company_adv.excerpt }}</p>
-                    </div>
-                </li>
-                {% endfor %}
-            </div>
-        </ul>
-    </div>
-    <div class="module-box gray-module-box">
-        <div class="module-title">
-            <p>全球领先的区块链技术服务提供商</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-        </div>
-        <ul class="cutting-box">
-            {% for chain_product in chain_product_list %}
-            <li>
-                <div>
-                    <img src="{% url 'index' %}media/{{ chain_product.icon }}" alt="cutting_icon_1">
-                    <p>{{ chain_product.name }}</p>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <!-- 技术解决方案 -->
-    <div class="module-box">
-        <div class="module-title">
-            <p>技术解决方案</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-        </div>
-        <div class="container" style="margin-top: 40px;">
+    <div class="banner">
+        <div class="banner-content-container">
+          <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="portfolio-main">
-                        <div id="portfolio-item" class="portfolio-item-active">
-                            {% for solution in solution_list %}
-                                <div class="cbp-item  baaspt">
-                                    <div class="portfolio-single">
-                                        <div class="portfolio-img">
-                                            <img src="{% url 'index' %}media/{{ solution.img }}" alt="#">
-                                        </div>
-                                        <div class="portfolio-content">
-                                            <h4><a href="{% url 'index' %}solution-{{ solution.id }}.html">{{ solution.name }}</a></h4>
-                                            <p>{{ solution.excerpt }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
+              <div class="left-content col-6">
+                <p class="title">区块链技术孵化器公司</p>
+                <p class="desc">区块链技术与实体经济的结合，区块链技术与实体经济的结合区块链技术与实体经济的结合区块链技术与实体经济的结合区块链技术与实体经济的结合，区块链技术与实体经济的结合。</p>
+                <a href="#" target="_blank" class="detail-btn">了解详情</a>
+              </div>
+              <div class="col-1"></div>
+              <div class="right-image col-5">
+                <img src="{% static 'images/index/banner_pic.png' %}" alt="">
+              </div>
             </div>
+          </div>
         </div>
     </div>
-    <!-- 我们精于区块链，但不局限区块链 -->
-    <div class="module-box gray-module-box">
+    <!-- 我们的优势 owner-forte -->
+    <div class="owner-forte">
         <div class="module-title">
-            <p>我们精于区块链，但不局限区块链</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+          <p class="title">我们的优势</p>
+          <p class="desc">平台优势的一句好的推荐语</p>
         </div>
-        <ul class="cutting-box">
-            {% for other_product in other_product_list %}
-            <li>
-                <div>
-                    <img src="{% url 'index' %}media/{{ other_product.img }}" alt="cutting_icon_1">
-                    <p>{{ other_product.name }}</p>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="container owner-forte-content">
+          <div class="row justify-content-around">
+              <div class="col-5 col-sm-4 col-lg-3 owner-forte-item">
+                  <img src="{% static 'images/index/advantage1.png' %}" alt="advantage1">
+                  <p class="title">安全可靠</p>
+                  <p class="desc">云端可干扰的密钥系统，实现多重加密，验证流程严谨，安全可靠</p>
+              </div>
+              <div class="col-lg-1 owner-forte-block"></div>
+            <div class="col-5 col-sm-4 col-lg-3 owner-forte-item">
+              <img src="{% static 'images/index/advantage2.png' %}" alt="advantage2">
+              <p class="title">经验丰富</p>
+              <p class="desc">拥有多年的项目经验、核心技术，结合企业需要，定制出适合的软件</p>
+            </div>
+            <div class="col-lg-1 owner-forte-block"></div>
+            <div class="col-5 col-sm-4 col-lg-3 owner-forte-item">
+              <img src="{% static 'images/index/advantage3.png' %}" alt="advantage3">
+              <p class="title">专属研发</p>
+              <p class="desc">为每一个项目组分配一个独立的团队，成为您的专属研发团队</p>
+            </div>
+            <div class="col-5 col-sm-4 col-lg-3 owner-forte-item">
+              <img src="{% static 'images/index/advantage4.png' %}" alt="advantage4">
+              <p class="title">量身定制</p>
+              <p class="desc">我们的宗旨就是量身定制，为不同的企业，打造专属的 产品，专家级的定制团队</p>
+            </div>
+            <div class="col-lg-1 owner-forte-block"></div>
+            <div class="col-5 col-sm-4 col-lg-3 owner-forte-item">
+              <img src="{% static 'images/index/advantage5.png' %}" alt="advantage5">
+              <p class="title">售后支持</p>
+              <p class="desc">项目的结束只是开始，我们拥有强大的售后团队为您解决技术策略支持</p>
+            </div>
+            <div class="col-lg-1 owner-forte-block"></div>
+            <div class="col-5 col-sm-4 col-lg-3 owner-forte-item">
+              <img src="{% static 'images/index/advantage6.png' %}" alt="advantage6">
+              <p class="title">业界口碑</p>
+              <p class="desc">我们收到过很多客户的良好反馈，我们的售前售后都得到广大客 户的极大认可</p>
+            </div>
+          </div>
+        </div>
     </div>
-    <!-- 媒体动态 -->
-    <div class="module-box container">
-        <div class="module-title">
-            <p>媒体动态</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
+    <!-- 我们的客户 owner-client -->
+    <div class="owner-client-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10">
+          <p class="title">我们的客户遍布全球</p>
+          <p class="desc">我们始终致力于创造共赢、良性的环境，通过联盟与合作，快速、可靠地构建满足客户业务发展需要的解决方案，在商业智能、移动增值业务、运营管理等方面与全球知名公司有着良好的合作关系。</p>
         </div>
-        <div class="container">
-            <ul class="media-box row">
-                {% for news in news_list %}
-                <li class="col-lg-3 col-md-6 col-12">
-                    <div class="media-item">
-                        <img src=".{% url 'index' %}media/{{ news.img }}" alt="heixinyoushi_01.png">
-                        <div class="media-text">
-                            <p class="media-title">{{ news.title }}</p>
-                            <p class="media-content">{{ news.excerpt }}</p>
-                        </div>
-                    </div>
-                </li>
-                {% endfor %}
+      </div>
+      <div class="row">
+        <img src="{% static '/images/Map.png' %}" alt="map" class="map-img">
+      </div>
+    </div>
+  </div>
+    <!-- 服务提供商 serve-container -->
+    <div class="serve-container">
+    <div class="module-title">
+      <p class="title">全球领先的区块链技术服务提供商</p>
+      <p class="desc">文案文案文案文案文案文案文案</p>
+    </div>
+    <div class="serve-content container">
+      <div class="row">
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider1.png" alt="provider">
+            <p class="serve-name">交易所钱包</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider2.png" alt="provider">
+            <p class="serve-name">公链联盟链</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider3.png" alt="provider">
+            <p class="serve-name">交易所</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider4.png" alt="provider">
+            <p class="serve-name">OTC系统</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider5.png" alt="provider">
+            <p class="serve-name">撮合系统</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider6.png" alt="provider">
+            <p class="serve-name">法币系统</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider7.png" alt="provider">
+            <p class="serve-name">去中心化交易所</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider8.png" alt="provider">
+            <p class="serve-name">量化系统</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider9.png" alt="provider">
+            <p class="serve-name">HD钱包</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider10.png" alt="provider">
+            <p class="serve-name">云端钱包</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider11.png" alt="provider">
+            <p class="serve-name">EOS钱包</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3 d-flex justify-content-center align-items-center">
+          <div class="server-item d-flex flex-column justify-content-center align-items-center">
+            <img src="./images/index/provider12.png" alt="provider">
+            <p class="serve-name">DAPP</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- 技术解决方案 solution-container -->
+    <div class="solution-container">
+    <div class="module-title">
+      <p class="title">技术解决方案</p>
+      <p class="desc">文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案</p>
+    </div>
+    <div class="solution-content">
+      <div class="container solution-box">
+        {% for solution in solution_list %}
+        <div class="row solution-item">
+          <div class="col-12 col-md-6 img-container">
+            <img src="{% url 'index' %}media/{{ solution.img }}" alt="{{ solution.name }}">
+          </div>
+          <div class="col-12 col-md-6 right-content d-flex flex-column justify-content-between">
+            <div>
+              <p class="solution-title">{{ solution.name }}</p>
+              <p class="solution-desc">{{ solution.excerpt }}</p>
+            </div>
+            <a href="#" class="more-btn" target="_blank">更多</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <ul class="hd">
+              <li class="on"></li>
+              <li></li>
+              <li></li>
             </ul>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- 我们的客户 -->
-    <div class="module-box gray-module-box">
-        <div class="module-title">
-            <p>我们的客户</p>
-            <img src="{% static 'images/title-icon.png' %}" alt="title-icon">
-        </div>
-        <div class="client-container container">
-            <div class="row">
-                <div class="client-box col-10 owl-carousel">
-                    {% for partner in partner_list %}
-                        <div>{{ partner.name }}</div>
-                    {% endfor %}
-                </div>
+  </div>
+    <!-- 精通于区块链 master-container -->
+    <div class="master-container">
+    <div class="master-box d-flex flex-column justify-content-between align-items-center">
+      <p>我们精于区块链，但不局限区块链</p>
+      <a href="http://www.zhifish.cn/" target="_blank" class="d-flex justify-content-center align-items-center">了解详情</a>
+    </div>
+  </div>
+    <!-- 新闻资讯 new-information -->
+    <div class="new-information">
+    <div class="module-title">
+      <p class="title">新闻资讯</p>
+      <p class="desc">关注我们的最新资讯</p>
+    </div>
+    <div class="container new-information-content">
+      <div class="row">
+        {% for news in news_list %}
+        <div class="col-12 col-md-4">
+          <div class="new-information-item">
+            <img src="{% url 'index' %}media/{{ news.img }}" alt="{{ news.title }}">
+            <div class="information-info">
+              <p class="news-title">{{ news.title }}</p>
+              <p class="news-desc">{{ news.excerpt }}</p>
+              <p class="news-time">{{ news.created_at | hdate }}</p>
             </div>
+          </div>
         </div>
+       {% endfor %}
+      </div>
+      <a href="#" class="more-btn" target="_blank">查看更多</a>
     </div>
-    <script>
-        $('.client-box').owlCarousel({
-            items: 6,
-            loop:true,
-            autoplay: true,
-            autoplayTimeout: 2000,
-            margin:10,
-            nav:true,
-            responsive:{
-                0:{
-                    items:2
-                },
-                576:{
-                    items:3
-                },
-                768: {
-                    items:3
-                },
-                960: {
-                    items:4
-                },
-                1140:{
-                    items:6
-                }
-            }
-        })
-    </script>
-    {% include 'front/layout/ask.html' %}
-    {% include 'front/layout/bottom.html' %}
-    {% include 'front/layout/right.html' %}
+  </div>
+    <!-- 合作伙伴 cooperative-partner -->
+    <div class="cooperative-partner">
+    <div class="module-title">
+      <p class="title">合作伙伴</p>
+      <p class="desc">公司合作伙伴展示</p>
+    </div>
+    <div class="container cooperative-content">
+      <div class="row">
+        <div class="col-lg-1 cooperative-white-block"></div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-lg-1 cooperative-white-block"></div>
+        <div class="col-lg-1 cooperative-white-block"></div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-lg-1 cooperative-white-block"></div>
+        <div class="col-lg-1 cooperative-white-block"></div>
+        <div class="col-6 col-md-3 col-lg-2  cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2 cooperative-item d-flex justify-content-center align-items-center">
+          <p class="d-flex justify-content-center align-items-center">木姜子科技</p>
+        </div>
+        <div class="col-lg-1 cooperative-white-block"></div>
+      </div>
+    </div>
+  </div>
+  {% include 'front/layout/bottom.html' %}
+  {% include 'front/layout/right.html' %}
 {% endblock %}
 {% block script %}
-     <script>
-		$('#portfolio-item').cubeportfolio({
-			filters: '#portfolio-nav',
-			loadMoreAction: 'click',
-			// defaultFilter: '*',
-			defaultFilter: '.baaspt',
-			layoutMode: 'grid',
-			animationType: 'quicksand',
-			gridAdjustment: 'responsive',
-			gapHorizontal: 30,
-			gapVertical: 30,
-			mediaQueries: [{
-				width: 1100,
-				cols: 3,
-			},{
-				width: 768,
-				cols: 3,
-			}, {
-				width: 480,
-				cols: 2,
-			},{
-				width: 0,
-				cols: 1,
-			}],
-			caption: 'overlayBottomPush',
-			displayType: 'sequentially',
-			displayTypeSpeed: 80,
-		});
-     </script>
-     <script>
-        jQuery(".banner-container").slide({mainCell:".bd",autoPlay:true});
-    </script>
+ <script>
+    jQuery(".solution-content").slide({mainCell:".solution-box",autoPlay:true});
+ </script>
 {% endblock %}

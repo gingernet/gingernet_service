@@ -1,0 +1,95 @@
+/* 头图 banner */
+.banner{width: 100%;margin-top: -86px;height: 728px;background: url('../images/solution/banner.png') center center no-repeat;}
+.banner .banner-content-container{padding-top: 100px;}
+.banner .banner-content-container .left-content{display: flex;flex-direction: column;justify-content: center;}
+.banner .banner-content-container .left-content .title{padding-right:100px;text-align:right;font-size: 60px;font-family: PingFang SC;font-weight: 400;color: #FFFFFF;margin-top: 54px;margin-bottom: 30px;}
+.banner .banner-content-container .left-content .desc{text-align:right;font-size: 26px;font-family: PingFang SC;font-weight: 400;color: #F8EAFF;line-height: 36px;;margin-bottom: 40px;}
+.banner .banner-content-container .right-image{display: flex;align-items: center;}
+.banner .banner-content-container .right-image img{display: block;width: 100%;}
+/* 页面锚点导航 page-nav-container */
+.page-nav-container{width: 100%;height: 150px;background-color: #12131C;}
+.page-nav-container .page-nav-item{background-color: #12131C;}
+.page-nav-container .page-nav-item p{width: 100%;border-right: 1px solid #fff;font-size: 24px;font-family: PingFang SC;font-weight: 400;text-align: center;color: #fff;margin: 0;cursor: pointer;}
+.page-nav-container .page-nav-item:last-child p{border: none;}
+/* 方案架构及详情 */
+.scheme-box{width: 100%;padding: 100px 0;}
+.scheme-detail-content{display: flex;flex-direction: column;justify-content: space-between;}
+.scheme-detail-content .scheme-introduce{padding-left: 40px;}
+.scheme-detail-content .scheme-introduce p{font-size: 16px;font-family: Microsoft YaHei;font-weight: 400;margin-bottom: 50px;color: #333333;}
+.scheme-detail-content .scheme-introduce p.title{font-size: 24px;font-family: Microsoft YaHei;font-weight: bold;color: #333333;margin-bottom: 19px;}
+/* 产品组合 project-group */
+.project-group{width: 100%;padding: 0 0 100px;}
+.project-group .project-group-content{margin-top: 40px;}
+.project-group .project-group-item{box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.05);border-radius: 0 0 20px 20px;}
+.project-group .group-item-title{width: 100%;height: 60px;background: linear-gradient(90deg, #146CFF, #002AFF);margin-top: 30px;display: flex;justify-content: space-between;align-items: center;padding: 0 10px 0 30px;}
+.project-group .group-item-title p{font-size: 24px;font-family: PingFang SC;font-weight: 500;color: #FFFFFF;margin: 0;}
+.project-group .group-item-title img{width: 40px;cursor: pointer;}
+.project-group .group-item-title img.show-introduce{transform: rotate(90deg);}
+.project-group .group-item-content{width: 100%;padding: 30px 36px;background-color: #F3F5FD;}
+.project-group .group-item-content p{margin: 0;font-size: 24px;font-family: PingFang SC;font-weight: 400;color: #002222;}
+.project-group .group-item-introduce{display: none;}
+.project-group .group-item-introduce .introduce-list{width: 100%;padding: 40px 14px;}
+.project-group .group-item-introduce .introduce-list li img{width: 48px;display: block;margin-bottom: 25px;}
+.project-group .group-item-introduce .introduce-list li .introduce-item-title{font-size: 30px;font-family: PingFang SC;font-weight: 500;color: #222222;}
+.project-group .group-item-introduce .introduce-list li .introduce-item-desc{ font-size: 16px;font-family: PingFang SC;font-weight: 500;color: #999999;text-align: justify;}
+
+/* 方案优势 scheme-advantage */
+.scheme-advantage{width: 100%;padding: 0 0 100px;}
+.scheme-advantage .scheme-advantage-item{margin-top: 90px;height: 270px;background: #FFFFFF;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.05);padding: 28px;}
+.scheme-advantage .scheme-advantage-item .number-icon{ 
+    font-size: 114px;
+    font-family: PingFang SC;
+    font-weight: bold;
+    font-style: italic;
+    color: #F1F4FF;
+    line-height: 120px;
+}
+.scheme-advantage .scheme-advantage-item .scheme-advantage-title{
+    font-size: 28px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #333333;
+    line-height: 42px;
+    margin: 0;
+    margin-top: -60px;
+    
+}
+.scheme-advantage .scheme-advantage-item .scheme-advantage-desc{
+    font-size: 18px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: #999999;
+    line-height: 30px;}
+
+/* 风控体系 risk-management  */
+.risk-management{width: 100%;padding: 0 0 100px;}
+.risk-management .project-advantage-item{height: 379px;border: 1px solid #EAF0FF;box-shadow: 0px 2px 8px 0px rgba(76, 92, 221, 0.1);border-radius: 10px;margin-top: 100px;padding: 0 41px 50px;box-sizing: border-box;}
+.risk-management .project-advantage-item .blue-line{width: 42px;height: 4px;background: #002AFF;position: absolute;}
+.risk-management .project-advantage-item .zero-icon{margin: 0;font-size: 72px;font-family: PingFang SC;font-weight: bold;color: #002AFF;line-height: 200px;}
+.risk-management .project-advantage-item .project-advantage-title{font-size: 21px;font-family: PingFang SC;font-weight: bold;color: #101010;margin-bottom: 0;line-height: 60px;}
+.risk-management .project-advantage-item .project-advantage-desc{font-size: 12px;font-family: PingFang SC;font-weight: 400;color: #999999;line-height: 20px;text-align: justify;margin-bottom: 0;}
+
+
+
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+@media (min-width: 576px){
+}
+/* 小屏幕（平板，大于等于 768px screen-sm-min ） */
+@media (min-width: 768px) { 
+    .scheme-advantage .scheme-advantage-item .scheme-advantage-desc{font-size: 16px;line-height: 22px;}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px screen-md-min ） */
+@media (min-width: 992px) { 
+    .banner .banner-content-container{padding-top: 100px;}
+    .scheme-advantage .scheme-advantage-item .scheme-advantage-desc{font-size: 18px;line-height: 30px;}
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px screen-lg-min ） */
+@media (min-width: 1200px) { 
+    .scheme-advantage .scheme-advantage-item .scheme-advantage-desc{font-size: 18px;line-height: 30px;}
+}
+
+
+
