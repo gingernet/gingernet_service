@@ -70,13 +70,13 @@ def solution(request, id):
 
 
 def research(request):
-    research_lst = Research.objects.filter(is_del='No')
+    research_lst = Research.objects.filter(is_del='No').order_by("-id")
     fronted_nav_mark = 'research'
     return render(request, 'front/research.html', locals())
 
 
 def comp_dyn(request):
-    comp_dyn_list = News.objects.filter(is_del='No')
+    comp_dyn_list = News.objects.filter(is_del='No').order_by("-id")
     comp_dyn_lists = paged_items(request, comp_dyn_list)
     fronted_nav_mark = 'comp_dyn'
     return render(request, 'front/news_list.html', locals())

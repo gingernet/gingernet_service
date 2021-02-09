@@ -219,14 +219,16 @@
       <div class="row">
         {% for news in news_list %}
         <div class="col-12 col-md-4">
-          <div class="new-information-item">
-            <img src="{% url 'index' %}media/{{ news.img }}" alt="{{ news.title }}">
-            <div class="information-info">
-              <p class="news-title">{{ news.title }}</p>
-              <p class="news-desc">{{ news.excerpt }}</p>
-              <p class="news-time">{{ news.created_at | hdate }}</p>
+          <a href="{% url 'index' %}comp_dyn_detail-{{ news.id }}.html">
+            <div class="new-information-item">
+                <img src="{% url 'index' %}media/{{ news.img }}" alt="{{ news.title }}">
+                <div class="information-info">
+                  <p class="news-title">{{ news.title }}</p>
+                  <p class="news-desc">{{ news.excerpt }}</p>
+                  <p class="news-time">{{ news.created_at | hdate }}</p>
+                </div>
             </div>
-          </div>
+          </a>
         </div>
        {% endfor %}
       </div>
