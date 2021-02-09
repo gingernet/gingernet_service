@@ -163,6 +163,52 @@
     </script>
 
      <script>
+     function CreateRightMsg(obj){
+            url_href = window.location.href;
+            var index = url_href.lastIndexOf("\/");
+            var url_str = url_href.substring(0, index + 1);
+            var req_url = url_str + 'online_msg';
+            let user_name = $("input[name='r_user_name']").val();
+            let phone = $("input[name='r_phone']").val();
+            let email = $("input[name='r_email']").val();
+            let describe = $('#r_describe').val();
+            if (user_name === "" ){
+                alert("用户不能为空，请填写")
+                return
+            }
+            if((/^1[123456789]d{9}$/.test(phone))){
+                alert("手机号码格式不正确，请检查后填写")
+                return
+            }
+            if (describe === "" || describe == null){
+                alert("描述内容不能为空，请填写")
+                return
+            }
+            $.ajax({
+                url: req_url,
+                data: {
+                    "user_name": user_name,
+                    "phone":phone,
+                    "weichat":"用户选择不填入",
+                    "email": email,
+                    "describe": describe,
+                },
+                type: 'GET',
+                dataType:'json',
+                success: function (data) {
+                    if (data.code === 0) {
+                        alert ('提交数据成功');
+                        window.location.reload();
+                    } else{
+                        alert ('提交数据成功');
+                        window.location.reload();
+                    }
+                },
+                error: function (data) {
+                   alert('提交数据错误，请重新提交');
+                }
+            });
+        }
      function CreateMsg(obj){
             url_href = window.location.href;
             var index = url_href.lastIndexOf("\/");
@@ -171,8 +217,8 @@
             let user_name = $("input[name='user_name']").val();
             let phone = $("input[name='phone']").val();
             let email = $("input[name='email']").val();
-            let describe = $("input[name='describe']").val();
-            if (user_name === "" || user_name == null){
+            let describe = $('#describe').val();
+            if (user_name === "" ){
                 alert("用户不能为空，请填写")
                 return
             }

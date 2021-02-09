@@ -14,7 +14,7 @@
                 <span>微信咨询</span>
                 <div class="info">
                     <p>微信扫描</p>
-                    <img src="{% static 'images/weixin.png'%}" alt="">
+                    <img src="{% static 'images/weixin_mjz.png'%}" alt="">
                 </div>
             </a>
         </li>
@@ -37,23 +37,23 @@
             <ul class="user-form-ul">
                 <li>
                     <p>姓名：</p>
-                    <input name="user_name" type="text" placeholder="请输入您的姓名(必填)">
+                    <input name="r_user_name" type="text" placeholder="请输入您的姓名(必填)">
                 </li>
                 <li>
                     <p>手机：</p>
-                    <input name="phone" type="text" placeholder="请输入您的联系方式(必填)">
+                    <input name="r_phone" type="text" placeholder="请输入您的联系方式(必填)">
                 </li>
                 <li>
                 <p>邮箱：</p>
-                    <input name="email" type="text" placeholder="请输入您的邮箱(选填)">
+                    <input name="r_email" type="text" placeholder="请输入您的邮箱(选填)">
                 </li>
                 <li>
                     <p>内容：</p>
-                    <textarea name="describe" id="" cols="10" rows="5" placeholder="请输入您的需求...(必填)"></textarea>
+                    <textarea id="r_describe" cols="10" rows="5" placeholder="请输入您的需求...(必填)"></textarea>
                 </li>
                 <p class="user-err-info"></p>
                 <li class="user-btn">
-                    <button class="user-confirm" type="button" onclick="CreateMsg(this)">提交</button>
+                    <button class="user-confirm" type="button" onclick="CreateRightMsg(this)">提交</button>
                 </li>
             </ul>
         </form>

@@ -11,7 +11,7 @@
       <div class="advisory-content-left col-12 col-lg-6">
         <input name="user_name" type="text" class="ipt short-ipt" placeholder="客户名称(必填)">
         <input name="phone" type="text" class="ipt short-ipt" placeholder="联系方式(必填)">
-        <input name="describe" type="text" class="ipt long-ipt" placeholder="请描述你遇到的问题(必填)"></input>
+        <textarea id="describe" type="text" class="ipt long-ipt" placeholder="请描述你遇到的问题(必填)"></textarea>
         <div class="submit-btn" onclick="CreateMsg(this)">提交</div>
       </div>
       <div class="advisory-content-right col-12 col-lg-6">
@@ -54,7 +54,7 @@
         <li><a href="http://anglelove.vip/" target="_blank">天使社交</a></li>
       </ul>
       <div class="col-6 col-sm-3 weixin-container">
-        <img class="weixin" src="{% static '/images/weixin.png' %}" alt="weixin">
+        <img class="weixin" src="{% static '/images/weixin.png' %}" alt="关注我们">
       </div>
     </div>
   </div>
