@@ -554,8 +554,8 @@ class OnlineMsg(BaseModel):
     HANDLE_CHOICES = [(x, x) for x in ['YES', 'NO']]
     name = models.CharField(max_length=70, verbose_name=u'姓名')
     phone = models.CharField(max_length=70, verbose_name=u'电话')
-    email = models.CharField(max_length=70, verbose_name=u'邮箱')
-    weichat = models.CharField(max_length=70, default="guo20123762", verbose_name=u'邮箱')
+    email = models.CharField(max_length=70, default="", verbose_name=u'邮箱')
+    weichat = models.CharField(max_length=70, default="", verbose_name=u'微信')
     content = models.TextField(max_length=500, blank=True, default="", verbose_name=u'留言内容')
     is_handle = models.CharField(max_length=16, choices=HANDLE_CHOICES, default='NO', verbose_name=u'是否处理')
     is_del = models.CharField(max_length=16, choices=DEL_CHOICES, default='NO', verbose_name=u'是否删除')

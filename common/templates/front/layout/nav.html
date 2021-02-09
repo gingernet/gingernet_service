@@ -5,14 +5,14 @@
           <img src="{% static 'images/logo.png'%}" alt="">
       </div>
       <ul class="nav-list-container">
-        <li><a href="{% url 'index' %}" target="_blank" class="is-active">首页</a></li>
+        <li><a id="index" href="{% url 'index' %}" target="_blank">首页</a></li>
          {% for item in navcat_category_list %}
               {% if item.navcat.nav_mark == "product" %}
-                  <li><a href="" class="project-nav">{{ item.navcat.name }}</a></li>
+                  <li><a  id="product" href="" class="project-nav">{{ item.navcat.name }}</a></li>
               {% elif item.navcat.nav_mark == "solution" %}
-                  <li><a class=" solution-nav">{{ item.navcat.name }}</a></li>
+                  <li><a id="solution" class="solution-nav">{{ item.navcat.name }}</a></li>
               {% else %}
-                  <li><a href="{% url 'index' %}{{ item.navcat.nav_mark }}" class="nav-item">{{ item.navcat.name }} </a></li>
+                  <li><a id="{{ item.navcat.nav_mark }}" href="{% url 'index' %}{{ item.navcat.nav_mark }}" class="nav-item">{{ item.navcat.name }} </a></li>
               {% endif %}
         {% endfor %}
       </ul>
@@ -20,14 +20,14 @@
     <div class="row">
       <div class="col-12 more-link solution-nav-more">
         {% for item in sl_list %}
-            <a href="{% url 'index' %}solution-{{ item.id }}.html" target="blank">{{ item.name }}</a>
+            <a id="solution" href="{% url 'index' %}solution-{{ item.id }}.html" target="blank">{{ item.name }}</a>
         {% endfor %}
       </div>
     </div>
     <div class="row">
       <div class="col-12 more-link project-nav-more">
           {% for item in cp_list %}
-             <a href="{% url 'index' %}product-{{ item.id }}.html" target="blank">{{ item.name }}</a>
+             <a id="product" href="{% url 'index' %}product-{{ item.id }}.html" target="blank">{{ item.name }}</a>
           {% endfor %}
       </div>
     </div>
@@ -43,11 +43,11 @@
       </div>
     </div>
     <div class="nav-list col-12">
-      <div class="nav-list-item"><a href="{% url 'index' %}">首页</a></div>
+      <div class="nav-list-item"><a id="index" href="{% url 'index' %}">首页</a></div>
         {% for item in navcat_category_list %}
              {% if item.navcat.nav_mark == "product" %}
                 <div class="nav-list-item child-list-item child-list-item-1">
-                  <a href="javascript:;">{{ item.navcat.name }}</a>
+                  <a id="product" href="javascript:;">{{ item.navcat.name }}</a>
                   <div class="list-icon">
                       <img src="{% static 'images/down_icon.png' %}" alt="down_icon" class="down-icon">
                       <img src="{% static 'images/down_icon.png' %}" alt="down_icon" class="up-icon" style="transform: rotate(180deg);">
@@ -56,13 +56,13 @@
               <div class="nav-item-list nav-item-list-1">
                   <ul>
                       {% for category in item.category_lst  %}
-                        <li><a href="{% url 'index' %}product-{{ category.id }}.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
+                        <li><a id="{{ product }}" href="{% url 'index' %}product-{{ category.id }}.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
                       {% endfor %}
                   </ul>
               </div>
             {% elif item.navcat.nav_mark == "solution"  %}
               <div class="nav-list-item child-list-item child-list-item-2">
-                  <a href="javascript:;">{{ item.navcat.name }}</a>
+                  <a id="solution" href="javascript:;">{{ item.navcat.name }}</a>
                   <div class="list-icon">
                       <img src="{% static 'images/down_icon.png' %}" alt="down_icon" class="down-icon">
                       <img src="{% static 'images/down_icon.png' %}" alt="down_icon" class="up-icon" style="transform: rotate(180deg);">
@@ -71,12 +71,12 @@
               <div class="nav-item-list nav-item-list-2">
                   <ul>
                     {% for category in item.category_lst  %}
-                        <li><a href="{% url 'index' %}solution-{{ category.id }}.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
+                        <li><a id="solution" href="{% url 'index' %}solution-{{ category.id }}.html">|-&nbsp;&nbsp;{{ category.name }}</a></li>
                     {% endfor %}
                   </ul>
               </div>
         {% else %}
-            <div class="nav-list-item"><a href="{% url 'index' %}{{ item.navcat.nav_mark }}">{{ item.navcat.name }}</a></div>
+            <div class="nav-list-item"><a id="{{ item.navcat.nav_mark }}" href="{% url 'index' %}{{ item.navcat.nav_mark }}">{{ item.navcat.name }}</a></div>
         {% endif %}
       {% endfor %}
     </div>

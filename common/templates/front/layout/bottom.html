@@ -5,14 +5,14 @@
   <div class="row">
     <div class="col-12 module-title">
       <p class="title">立即咨询</p>
-      <p class="desc">遇到相关技术问题？请在线提交你所需的服务请求，最短2分钟内将有工程师联系帮助您解决处理。</p>
+      <p class="desc">遇到区块链相关技术问题或咨询相关产品？请在线提交你所需的服务请求，最短2分钟内将有工程师联系帮助您解决处理。</p>
     </div>
     <div class="advisory-content col-12 row">
       <div class="advisory-content-left col-12 col-lg-6">
-        <input type="text" class="ipt short-ipt" placeholder="客户名称">
-        <input type="text" class="ipt short-ipt" placeholder="联系方式">
-        <textarea cols="30" rows="10" class="ipt long-ipt" placeholder="请描述你遇到的问题"></textarea>
-        <div class="submit-btn">提交</div>
+        <input name="user_name" type="text" class="ipt short-ipt" placeholder="客户名称(必填)">
+        <input name="phone" type="text" class="ipt short-ipt" placeholder="联系方式(必填)">
+        <textarea name="describe" cols="30" rows="10" class="ipt long-ipt" placeholder="请描述你遇到的问题(必填)"></textarea>
+        <div class="submit-btn" onclick="CreateMsg(this)">提交</div>
       </div>
       <div class="advisory-content-right col-12 col-lg-6">
         <img src="{% static 'images/advisory-map.png' %}" alt="advisory-map">
@@ -30,20 +30,28 @@
       <ul class="col-6 col-sm-3">
         <li class="title">关于我们</li>
         <li><a href="#" target="_blank">服务热线</a></li>
-        <li><a href="#" target="_blank">服务热线</a></li>
-        <li><a href="#" target="_blank">服务热线</a></li>
+        <li><a href="#" target="_blank">集团简介</a></li>
+        <li><a href="#" target="_blank">技术团队</a></li>
+        <li><a href="#" target="_blank">发展流程</a></li>
+        <li><a href="#" target="_blank">加入我们</a></li>
       </ul>
       <ul class="col-6 col-sm-3">
         <li class="title">合作流程</li>
-        <li><a href="#" target="_blank">服务热线</a></li>
-        <li><a href="#" target="_blank">服务热线</a></li>
-        <li><a href="#" target="_blank">服务热线</a></li>
+        <li><a href="#" target="_blank">确定需求</a></li>
+        <li><a href="#" target="_blank">项目设计</a></li>
+        <li><a href="#" target="_blank">项目开发</a></li>
+        <li><a href="#" target="_blank">项目测试</a></li>
+        <li><a href="#" target="_blank">项目上线</a></li>
+        <li><a href="#" target="_blank">项目维护</a></li>
       </ul>
       <ul class="col-6 col-sm-3">
         <li class="title">集团子公司</li>
-        <li><a href="#" target="_blank">服务热线</a></li>
-        <li><a href="#" target="_blank">服务热线</a></li>
-        <li><a href="#" target="_blank">服务热线</a></li>
+        <li><a href="http://www.zhifish.cn/" target="_blank">知鱼定制</a></li>
+        <li><a href="http://fe.gingernet.vip/" target="_blank">知鱼财经</a></li>
+        <li><a href="http://www.wenwoha.com/" target="_blank">问我学院</a></li>
+        <li><a href="http://shiji.gingernet.vip/" target="_blank">市集</a></li>
+        <li><a href="#" target="_blank">CoinCore</a></li>
+        <li><a href="http://anglelove.vip/" target="_blank">天使社交</a></li>
       </ul>
       <div class="col-6 col-sm-3 weixin-container">
         <img class="weixin" src="{% static '/images/weixin.png' %}" alt="weixin">
@@ -54,8 +62,8 @@
 <div class="footer-bottom-container">
   <div class="container">
     <div class="row flex-column">
-      <p>© 2018-2020 知鱼网络（天津）科技有限公司 | 知鱼网络（贵州）科技有限公司 | All Rights Reserved</p>
-      <p>友情链接： <a href="#" target="_blank">木姜子科技</a> | <a href="#" target="_blank">知鱼财经</a> | <a href="#" target="_blank">问我学院</a></p>
+      <p>© 2018-2020 天津木姜子科技有限公司 | 天津天使网络科技有限公司 | <a href="https://beian.miit.gov.cn" target="_blank">津ICP备20001736号-2</a> | All Rights Reserved </p>
+      <p>友情链接： <a href="http://www.zhifish.cn/" target="_blank">知鱼定制</a> | <a href="http://www.wenwoha.com/" target="_blank">问我学院</a> | <a href="http://shiji.gingernet.vip/" target="_blank">市集商城</a></p>
     </div>
   </div>
 </div>

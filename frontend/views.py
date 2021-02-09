@@ -51,41 +51,67 @@ def index(request):
     solution_list = Solution.objects.filter(is_del='NO').order_by('-id')[0:3]
     news_list = News.objects.filter(is_del='NO').order_by('-id')[0:4]
     partner_list = Partner.objects.filter(is_del='NO').order_by('-id')
+    fronted_nav_mark = 'index'
     return render(request, 'front/index.html', locals())
 
 
 def product(request, id):
     category = Category.objects.get(id=id)
     product = Product.objects.get(category=category)
+    fronted_nav_mark = 'product'
     return render(request, 'front/product.html', locals())
 
 
 def solution(request, id):
     category = Category.objects.get(id=id)
     solution = Solution.objects.get(category=category)
+    fronted_nav_mark = 'solution'
     return render(request, 'front/solution.html', locals())
 
 
 def research(request):
     research_lst = Research.objects.filter(is_del='No')
+    fronted_nav_mark = 'research'
     return render(request, 'front/research.html', locals())
 
 
 def comp_dyn(request):
     comp_dyn_list = News.objects.filter(is_del='No')
     comp_dyn_lists = paged_items(request, comp_dyn_list)
+    fronted_nav_mark = 'comp_dyn'
     return render(request, 'front/news_list.html', locals())
 
 
 def comp_dyn_detail(request, id):
     dyn_detail = News.objects.get(id=id)
     comp_dyn_list = News.objects.filter(is_del='No')[:10]
+    fronted_nav_mark = 'comp_dyn'
     return render(request, 'front/news_detail.html', locals())
 
 
 def partner(request):
+    fronted_nav_mark = 'partner'
     return render(request, 'front/partner.html', locals())
 
 
 def about(request):
+    fronted_nav_mark = 'about'
     return render(request, 'front/about.html', locals())
+
+
+def online_msg(request):
+    user_name = request.GET.get('user_name', "")
+    phone = request.GET.get('phone', "")
+    weichat = request.GET.get('weichat', "")
+    email = request.GET.get('email', "")
+    describe = request.GET.get('describe', "")
+    OnlineMsg.objects.create(
+        name=user_name,
+        phone=phone,
+        email=email,
+        weichat=weichat,
+        content=describe,
+        is_handle="No",
+        is_del="No",
+    )
+    return ok_json(None)

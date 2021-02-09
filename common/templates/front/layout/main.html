@@ -27,6 +27,75 @@
     <script src="{% static 'js/jquery.SuperSlide.2.1.1.js'%}"></script>
     <script src="{% static 'js/owl.carousel.js'%}"></script>
      <script>
+        fronted_nav_mark = "{{ fronted_nav_mark }}";
+        console.log(fronted_nav_mark)
+        if(fronted_nav_mark === 'index'){
+            console.log($("qqqq"))
+            $("#index").addClass('is-active')
+            $("#product").removeClass('is-active')
+            $("#solution").removeClass('is-active')
+            $("#research").removeClass('is-active')
+            $("#comp_dyn").removeClass('is-active')
+            $("#partner").removeClass('is-active')
+            $("#about").removeClass('is-active')
+        }
+        if(fronted_nav_mark === 'product') {
+             console.log($("ggggg"))
+            $("#index").removeClass('is-active')
+            $("#product").addClass('is-active')
+            $("#solution").removeClass('is-active')
+            $("#research").removeClass('is-active')
+            $("#comp_dyn").removeClass('is-active')
+            $("#partner").removeClass('is-active')
+            $("#about").removeClass('is-active')
+        }
+        if(fronted_nav_mark === 'solution') {
+            $("#index").removeClass('is-active')
+            $("#product").removeClass('is-active')
+            $("#solution").addClass('is-active')
+            $("#research").removeClass('is-active')
+            $("#comp_dyn").removeClass('is-active')
+            $("#partner").removeClass('is-active')
+            $("#about").removeClass('is-active')
+        }
+        if(fronted_nav_mark === 'research') {
+            $("#index").removeClass('is-active')
+            $("#product").removeClass('is-active')
+            $("#solution").removeClass('is-active')
+            $("#research").addClass('is-active')
+            $("#comp_dyn").removeClass('is-active')
+            $("#partner").removeClass('is-active')
+            $("#about").removeClass('is-active')
+        }
+        if(fronted_nav_mark === 'comp_dyn') {
+            $("#index").removeClass('is-active')
+            $("#product").removeClass('is-active')
+            $("#solution").removeClass('is-active')
+            $("#research").removeClass('is-active')
+            $("#comp_dyn").addClass('is-active')
+            $("#partner").removeClass('is-active')
+            $("#about").removeClass('is-active')
+        }
+        if(fronted_nav_mark === 'partner') {
+            $("#index").removeClass('is-active')
+            $("#product").removeClass('is-active')
+            $("#solution").removeClass('is-active')
+            $("#research").removeClass('is-active')
+            $("#comp_dyn").removeClass('is-active')
+            $("#partner").addClass('is-active')
+            $("#about").removeClass('is-active')
+        }
+        if(fronted_nav_mark === 'about') {
+            $("#index").removeClass('is-active')
+            $("#product").removeClass('is-active')
+            $("#solution").removeClass('is-active')
+            $("#research").removeClass('is-active')
+            $("#comp_dyn").removeClass('is-active')
+            $("#partner").removeClass('is-active')
+            $("#about").addClass('is-active')
+        }
+     </script>
+     <script>
     var timer = null;
     var timer2 = null;
     $('.project-nav').mouseenter(function(){
@@ -92,6 +161,69 @@
             $('.user-modal').show()
         })
     </script>
+
+     <script>
+     function CreateMsg(obj){
+            url_href = window.location.href;
+            var index = url_href.lastIndexOf("\/");
+            var url_str = url_href.substring(0, index + 1);
+            var req_url = url_str + 'online_msg';
+            let user_name = $("input[name='user_name']").val();
+            let phone = $("input[name='phone']").val();
+            let email = $("input[name='email']").val();
+            let describe = $("input[name='describe']").val();
+            if (user_name === "" || user_name == null){
+                alert("用户不能为空，请填写")
+                return
+            }
+            if((/^1[123456789]d{9}$/.test(phone))){
+                alert("手机号码格式不正确，请检查后填写")
+                return
+            }
+            if (describe === "" || describe == null){
+                alert("描述内容不能为空，请填写")
+                return
+            }
+            $.ajax({
+                url: req_url,
+                data: {
+                    "user_name": user_name,
+                    "phone":phone,
+                    "weichat":"用户选择不填入",
+                    "email": email,
+                    "describe": describe,
+                },
+                type: 'GET',
+                dataType:'json',
+                success: function (data) {
+                    if (data.code === 0) {
+                        alert ('提交数据成功');
+                        window.location.reload();
+                    } else{
+                        alert ('提交数据成功');
+                        window.location.reload();
+                    }
+                },
+                error: function (data) {
+                   alert('提交数据错误，请重新提交');
+                }
+            });
+        }
+        function showMsg(text, heading, icon) {
+            if (heading === undefined) {
+                let heading = "提示";
+            }
+            $.toast({
+                text: text,
+                heading: heading,
+                icon: icon,
+                position: 'top-center',
+                textAlign: 'left',
+                loader: false,
+                loaderBg: '#ffffff',
+            });
+        }
+     </script>
     {% block script %}
     {% endblock %}
   </body>
