@@ -10,8 +10,8 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="left-content col-12 col-lg-4">
-            <p class="title">解决方案</p>
-            <p class="desc">--交易所解决方案</p>
+            <p class="title">{{ solution.name }}</p>
+            <p class="desc">{{ solution.excerpt }}</p>
           </div>
           <div class="col-1"></div>
           <div class="right-image col-7">
@@ -46,14 +46,13 @@
         <div class="container" style="margin-top: 40px;">
             <div class="row no-gutters">
                 <div class="col-lg-7 col-12">
-                    <img src="{% static 'images/solution/scheme_detail_left.png' %}" alt="" style="display: block;width: 100%;">
+                    <img src="{% url 'index' %}media/{{ solution.img }}" alt="" style="display: block;width: 100%;">
                 </div>
                 <div class="scheme-detail-content col-lg-5 col-12">
                     <img src="{% static 'images/solution/scheme_detail_icon.png' %}" alt="">
                     <div class="scheme-introduce">
                         <p class="title">方案详情</p>
-                        <p>功能成熟、应用广泛的数字资产现货交易系统，强大的内存撮合引擎保证高并发交易支持，包含完善的前后台系统，提供配套中心化钱包，系统安全稳定，可保障平台和用户双方的隐私安全、系统安全和资产安全，支持策略委托；功能成熟的金融期货交易系统，支持双向开仓和逐仓管理。</p>
-                        <p>有完备的风险防范制度，并可按指数价格交割，最大限度保护用户的权益和资产安全。现货杠杆交易系统，竞价交易机制，与现货交易共享盘口深度，为用户提供中短期借贷资金周转支持，完善的风险防范机制，保证平台零亏损。</p>
+                        <p>{{ solution.detail | safe }}</p>
                     </div>
                     <img src="{% static 'images/solution/scheme_detail_icon.png' %}" alt="">
                 </div>

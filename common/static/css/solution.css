@@ -2,8 +2,8 @@
 .banner{width: 100%;margin-top: -86px;height: 728px;background: url('../images/solution/banner.png') center center no-repeat;}
 .banner .banner-content-container{padding-top: 100px;}
 .banner .banner-content-container .left-content{display: flex;flex-direction: column;justify-content: center;}
-.banner .banner-content-container .left-content .title{padding-right:100px;text-align:right;font-size: 60px;font-family: PingFang SC;font-weight: 400;color: #FFFFFF;margin-top: 54px;margin-bottom: 30px;}
-.banner .banner-content-container .left-content .desc{text-align:right;font-size: 26px;font-family: PingFang SC;font-weight: 400;color: #F8EAFF;line-height: 36px;;margin-bottom: 40px;}
+.banner .banner-content-container .left-content .title{padding-right:100px;text-align:right;font-size: 40px;font-family: PingFang SC;font-weight: 400;color: #FFFFFF;margin-top: 54px;margin-bottom: 30px;}
+.banner .banner-content-container .left-content .desc{text-align:right;font-size: 18px;font-family: PingFang SC;font-weight: 400;color: #F8EAFF;line-height: 36px;;margin-bottom: 40px;}
 .banner .banner-content-container .right-image{display: flex;align-items: center;}
 .banner .banner-content-container .right-image img{display: block;width: 100%;}
 /* 页面锚点导航 page-nav-container */

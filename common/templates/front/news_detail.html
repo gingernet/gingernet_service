@@ -2,37 +2,24 @@
 {% load staticfiles ginger_tags %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/article.css' %}" />
+    <style>
+     .news-detail {
+         background:#002AFF;
+         width: 100%;
+    }
+    </style>
 {% endblock %}
 {% block body %}
-{% include 'front/layout/nav.html' %}
-<div class="module-tab-banner">
-    <img src="{% static 'images/news_list_banner.png' %}" alt="research_banner">
+<div class="news-detail">
+   {% include 'front/layout/nav.html' %}
 </div>
-<div class="article-container container">
-    <div class="row">
-        <div class="col-12 col-sm-8 article-detail">
-            <p class="title">{{ dyn_detail.title }}</p>
-            <p class="time">{{ dyn_detail.created_at | hdatetime }}</p>
-            <div class="article-main-body" style="height: 100%">
-              <p>{{ dyn_detail.body | safe }}</p>
-            </div>
-        </div>
-        <div class="col-8 col-sm-4">
-            <div class="new-list-box">
-                <p class="title">热门新闻</p>
-                <div class="line"></div>
-                 {% for comp_dyn in comp_dyn_list %}
-                    <div class="row new-list-item">
-                        <div class="col-5">
-                            <img src="{% url 'index' %}media/{{ comp_dyn.img }}" alt="">
-                        </div>
-                        <div class="col-6 new-list-item-content">
-                            <p class="item-title">{{ comp_dyn.title }}</p>
-                            <p class="item-desc">{{ comp_dyn.excerpt }}</p>
-                            <p class="time">{{ comp_dyn.created_at | hdate }}</p>
-                        </div>
-                    </div>
-               {% endfor %}
+<div style="background: #F2F2F2">
+    <div class="article-content container">
+        <div class="row">
+            <div class="col-12">
+                <p class="acticle-title">{{ dyn_detail.title }}</p>
+                <p class="time">{{ dyn_detail.created_at | hdatetime }}</p>
+                <p>{{ dyn_detail.body | safe }}</p>
             </div>
         </div>
     </div>

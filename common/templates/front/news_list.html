@@ -26,6 +26,7 @@
         <div class="row">
           {% for comp_dyn in comp_dyn_lists %}
             <div class="research-item-box col-12">
+               <a href="{% url 'index' %}comp_dyn_detail-{{ comp_dyn.id }}.html">
                 <div class="row">
                     <div class="col-4 col-lg-3 research-item-left d-flex align-items-center">
                         <img src="{% url 'index' %}media/{{ comp_dyn.img }}" alt="">
@@ -38,6 +39,7 @@
                         </div>
                     </div>
                 </div>
+               </a>
             </div>
           {% endfor %}
         </div>
