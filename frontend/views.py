@@ -49,7 +49,7 @@ def index(request):
     other_product_list = Product.objects.filter(product_cat='other', is_del='NO')
     company_adv_list = CompanyAdvantage.objects.filter(is_del='NO')
     solution_list = Solution.objects.filter(is_del='NO').order_by('-id')[0:3]
-    news_list = News.objects.filter(is_del='NO').order_by('-id')[0:4]
+    news_list = News.objects.filter(is_del='NO').order_by('-id')[0:3]
     partner_list = Partner.objects.filter(is_del='NO').order_by('-id')
     fronted_nav_mark = 'index'
     return render(request, 'front/index.html', locals())
